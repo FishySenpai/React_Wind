@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { Navbar, Summer2022, Anime, TopAnime, TopAnimeInfo, Spring2022, Search, Seasons, SearchAnime, Getgenre, ShowGenre, Login } from "./components";
-import Searchbar from "./components/Searchbar";
+import { Navbar, Summer2022, Anime, TopAnime, TopAnimeInfo, Spring2022, Search, ShowGenre, Login } from "./components";
+
 
 const App = () => {
   return (
