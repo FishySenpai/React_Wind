@@ -4,7 +4,6 @@ import { AnimeContext } from "./AnimeContext";
 import Getgenre from "./Getgenre";
 
 const Anime = ({animeList}) => {
-
   const navigate = useNavigate();
     console.log(animeList);
     const handleClick= ()=>{
@@ -12,7 +11,6 @@ const Anime = ({animeList}) => {
     }
   if(animeList){
     return (
-      <div>
         <div>
           <div className="px-6 items-center mx-auto container justify-between">
             <div className="p-6 pt-12 items-center container justify-between">
@@ -35,8 +33,10 @@ const Anime = ({animeList}) => {
             </div>
           </div>
         </div>
-      </div>
     );
+  }
+  else {
+    <div>Loading...</div>
   }
 };
 

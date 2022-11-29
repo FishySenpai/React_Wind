@@ -14,6 +14,7 @@ import Searchbar from "./Searchbar";
 import ShowGenre from "./ShowGenre";
 import Seasons from "./Seasons";
 import Login from "./Login";
+import Getseasonslist from "./Getseasonslist";
 
 export {
     Navbar,
@@ -32,4 +33,5 @@ export {
     ShowGenre,
     Seasons,
     Login,
+    Getseasonslist,
 }

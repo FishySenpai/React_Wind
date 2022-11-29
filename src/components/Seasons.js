@@ -41,7 +41,7 @@ const Seasons = () => {
 
   if (animeList) {
     return (
-      <div className="">
+      <div>
         <div className="flex flex-row space-x-12">
           <form className="pt-2" onSubmit={handleYear}>
             <div>
@@ -160,9 +160,11 @@ const Seasons = () => {
             </div>
           </form>
         </div>
-        <div className="">
-          <Anime animeList={animeList} />
-          {console.log(animeList)}
+        <div className="static">
+          <div className="absolute right-32 pt-8">
+            <Anime animeList={animeList} />
+            {console.log(animeList)}
+          </div>
         </div>
       </div>
     );
