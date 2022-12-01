@@ -13,7 +13,8 @@ import Getgenre from "./Getgenre";
 import Searchbar from "./Searchbar";
 import ShowGenre from "./ShowGenre";
 import Seasons from "./Seasons";
-import Login from "./Login";
+import Login from "./Login and Registration/Login"
+import Registration from "./Login and Registration/Registration";
 import Getseasonslist from "./Getseasonslist";
 
 export {
@@ -34,4 +35,5 @@ export {
     Seasons,
     Login,
     Getseasonslist,
+    Registration,
 }

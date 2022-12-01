@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Anime from "./Anime";
+import Search from "./Search";
 
 const Seasons = () => {
   const [year, setYear] = useState(2022);

@@ -49,7 +49,7 @@ const Login = () => {
           {" "}
           Don't have an account?{" "}
           <a
-            href="#"
+            href="/register"
             className="font-mono cursor-pointer text-[16px] text-white hover:underline"
           >
             Sign Up

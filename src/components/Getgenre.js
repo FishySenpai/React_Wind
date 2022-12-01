@@ -14,7 +14,6 @@ const Getgenre = () => {
     if (animeList) {
       setToggle(!toggle);
       console.log(genre)
-      navigate(`/search/anime/genre`);
       FetchGenre();
       e.preventDefault();
     } else {
