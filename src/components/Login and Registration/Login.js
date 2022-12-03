@@ -3,13 +3,11 @@ import { useState } from 'react';
 import Axios from 'axios';
 
 const Login = () => {
-  const [email, setEmail] = useState();
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
 
   const login = () => {
     Axios.post("http://localhost:3001/login", {
-      email: email,
       username: username,
       password: password,
     }).then((response) => {
@@ -22,19 +20,6 @@ const Login = () => {
         <h1 className="text-3xl font-mono cursor-pointer text-white underline">
           Login
         </h1>
-       
-          <div className="mb-2">
-            <label for="email" className="font-mono text-[16px] text-white">
-              Email
-            </label>
-            <input
-              type="email"
-              className="block w-full px-4 py-2 mt-2 font-mono text-gray-900 bg-white border rounded-md focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40"
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-            />
-          </div>
           <div className="mb-2">
             <label for="username" className="font-mono text-[16px] text-white">
               Username
