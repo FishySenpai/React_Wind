@@ -1,11 +1,12 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { Navbar, Summer2022, Anime, TopAnime, TopAnimeInfo, Spring2022, Search, ShowGenre, Login, Registration} from "./components";
+import { Navbar, Summer2022, Anime, TopAnime, TopAnimeInfo, Spring2022, Search, ShowGenre, Login, Registration, Getseasonslist} from "./components";
 
 const App = () => {
   return (
     <div className="bg-main">
       <Navbar />
+      <Getseasonslist/>
       <div>
         <Routes>
           <Route
