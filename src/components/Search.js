@@ -5,6 +5,7 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import Anime from "./Anime";
 import Getgenre from "./Getgenre";
 import Seasons from "./Seasons";
+import Getseasonslist from "./Getseasonslist";
 
 const Search = () => {
   const [search, setSearch] = useState("");
@@ -62,8 +63,7 @@ const Search = () => {
               >
                 <div className="flex flex-row space-x-12">
                   <Getgenre />
-                    <Seasons />
-                  
+                  <Getseasonslist/>
                 </div>
               </a>
             ) : (

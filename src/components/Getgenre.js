@@ -15,6 +15,7 @@ const Getgenre = () => {
       setToggle(!toggle);
       console.log(genre)
       FetchGenre();
+      
       e.preventDefault();
     } else {
       e.preventDefault();
@@ -23,7 +24,8 @@ const Getgenre = () => {
 
   const handleClick = () => {
     setToggle(false);
-    setGenre(genre.mal_id)
+    setGenre(genre.mal_id);
+    navigate(`/search/anime/genre/${genre}`);
   }
 
   
@@ -63,7 +65,6 @@ const Getgenre = () => {
             </div>
           </div>
         </div>
-        {console.log(animeList)}
       </div>
     );
   } else {

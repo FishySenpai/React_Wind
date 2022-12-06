@@ -43,78 +43,8 @@ const Seasons = () => {
   if (animeList) {
     return (
       <div>
-        <div className="flex flex-row space-x-12">
-          <form className="pt-2" onSubmit={handleYear}>
-            <div>
-              <button
-                onClick={() => setYearToggle((prev) => !prev)}
-                className="pb-2 text-gray-500 text-lg hover:text-red-500 cursor-pointer"
-              >
-                Year
-              </button>
-              <div className={`${yearToggle ? "flex" : "hidden"}`}>
-                <div className="flex flex-col w-[188px] pl-2 space-y-1 bg-white rounded font-normal">
-                  <button
-                    value={2022}
-                    onClick={(e) => setYear(e.target.value)}
-                    className="px-4 py-2 text-left text-gray-500 text-md hover:text-red-500 cursor-pointer "
-                  >
-                    2022
-                    {console.log(year)}
-                  </button>
-                  <button
-                    value={2021}
-                    onClick={(e) => setYear(e.target.value)}
-                    className="px-4 py-2 text-left text-gray-500 text-md hover:text-red-500 cursor-pointer "
-                  >
-                    2021
-                    {console.log(year)}
-                  </button>
-                  <button
-                    value={2020}
-                    onClick={(e) => setYear(e.target.value)}
-                    className="px-4 py-2 text-left text-gray-500 text-md hover:text-red-500 cursor-pointer "
-                  >
-                    2020
-                    {console.log(year)}
-                  </button>
-                  <button
-                    value={2019}
-                    onClick={(e) => setYear(e.target.value)}
-                    className="px-4 py-2 text-left text-gray-500 text-md hover:text-red-500 cursor-pointer "
-                  >
-                    2019
-                    {console.log(year)}
-                  </button>
-                  <button
-                    value={2018}
-                    onClick={(e) => setYear(e.target.value)}
-                    className="px-4 py-2 text-left text-gray-500 text-md hover:text-red-500 cursor-pointer "
-                  >
-                    2018
-                    {console.log(year)}
-                  </button>
-                  <button
-                    value={2017}
-                    onClick={(e) => setYear(e.target.value)}
-                    className="px-4 py-2 text-left text-gray-500 text-md hover:text-red-500 cursor-pointer "
-                  >
-                    2017
-                    {console.log(year)}
-                  </button>
-                  <button
-                    value={2016}
-                    onClick={(e) => setYear(e.target.value)}
-                    className="px-4 py-2 text-left text-gray-500 text-md hover:text-red-500 cursor-pointer "
-                  >
-                    2016
-                    {console.log(year)}
-                  </button>
-                </div>
-              </div>
-            </div>
-          </form>
-          <form className="pt-2" onSubmit={handleSeason}>
+        <div>
+          <form className="pt-2">
             <div className="flex flex-col">
               <button
                 onClick={() => setSeasonToggle((prev) => !prev)}
@@ -126,7 +56,9 @@ const Seasons = () => {
                 <div className="flex flex-col w-[188px] pl-2 space-y-1 bg-white rounded font-normal">
                   <button
                     value={"spring"}
-                    onClick={(e) => setSeason(e.target.value)}
+                    onClick={(e) => {
+                      setSeason(e.target.value);
+                    }}
                     className="px-4 py-2 text-left text-gray-500 text-md hover:text-red-500 cursor-pointer "
                   >
                     Spring
