@@ -48,7 +48,7 @@ const Getgenre = () => {
             Genre
           </button>
           <div className={`${toggle ? "flex" : "hidden"}`}>
-            <div className="flex flex-col w-[188px] h-[300px] overflow-y-auto ml-36 bg-white rounded font-normal">
+            <div className="flex flex-col h-[300px] absolute overflow-y-auto bg-white rounded font-normal">
               {animeList.map((genre, index) => (
                 <ul className="flex flex-col">
                   <li className="px-4 py-2" key={genre.mal_id}>

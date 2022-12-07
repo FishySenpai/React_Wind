@@ -44,7 +44,7 @@ const Getseasonslist = () => {
   };
   if (animeList) {
     return (
-      <div className="flex flex-row space-x-12">
+      <div className="flex flex-row pt-2 space-x-16">
         <div>
           <button
             className="pb-2 text-gray-500 text-lg text-left hover:text-red-500 cursor-pointer"
@@ -52,10 +52,10 @@ const Getseasonslist = () => {
           >
             Year
           </button>
-          <form onSubmit={handleTest}>
+          <form className="" onSubmit={handleTest}>
             <div className={`${yearToggle ? "flex" : "hidden"}`}>
-              <div className="h-[300px] w-[350px] overflow-y-auto">
-                <div className="flex flex-col w-[188px] ml-36 bg-white rounded font-normal">
+              <div className="h-[300px] absolute overflow-y-auto overflow-x-hidden">
+                <div className="flex flex-col w-[150px] bg-white rounded font-normal">
                   {seasonList.slice(0, 50).map((seasons, index) => (
                     <ul className="flex flex-col">
                       <li className="px-4 py-2" key={seasons.mal_id}>
@@ -89,11 +89,12 @@ const Getseasonslist = () => {
           <form className="pt-2" onSubmit={handleTest}>
             <div className="flex flex-col">
               <div className={`${seasonToggle ? "flex" : "hidden"}`}>
-                <div className="flex flex-col w-[188px] pl-2 space-y-1 bg-white rounded font-normal">
+                <div className="flex flex-col absolute w-[150px] pl-2 space-y-1 bg-white rounded font-normal">
                   <button
                     value={"spring"}
                     onClick={(e) => {
                       setSeason(e.target.value);
+                      setSeasonToggle((prev) => !prev);
                     }}
                     className="px-4 py-2 text-left text-gray-500 text-md hover:text-red-500 cursor-pointer "
                   >
@@ -102,7 +103,7 @@ const Getseasonslist = () => {
                   </button>
                   <button
                     value={"winter"}
-                    onClick={(e) => setSeason(e.target.value)}
+                    onClick={(e) => {setSeason(e.target.value); setSeasonToggle((prev) => !prev);}}
                     className="px-4 py-2 text-left text-gray-500 text-md hover:text-red-500 cursor-pointer "
                   >
                     Winter
@@ -110,7 +111,7 @@ const Getseasonslist = () => {
                   </button>
                   <button
                     value={"summer"}
-                    onClick={(e) => setSeason(e.target.value)}
+                    onClick={(e) => {setSeason(e.target.value);setSeasonToggle((prev) => !prev)}}
                     className="px-4 py-2 text-left text-gray-500 text-md hover:text-red-500 cursor-pointer "
                   >
                     Summer
@@ -118,7 +119,7 @@ const Getseasonslist = () => {
                   </button>
                   <button
                     value={"fall"}
-                    onClick={(e) => setSeason(e.target.value)}
+                    onClick={(e) => {setSeason(e.target.value);setSeasonToggle((prev) => !prev);}}
                     className="px-4 py-2 text-left text-gray-500 text-md hover:text-red-500 cursor-pointer "
                   >
                     Fall
@@ -130,7 +131,7 @@ const Getseasonslist = () => {
           </form>
         </div>
         <div className="static">
-          <div className="absolute right-32 mt-[300px]">
+          <div className="absolute right-32 mt-32 -z-[1]">
             <Anime animeList={animeList} />
             {console.log(animeList)}
           </div>

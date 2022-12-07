@@ -22,7 +22,7 @@ const ShowGenre = () => {
   if (animeList) {
     return (
       <div className="static">
-        <div className="absolute right-32 mt-[300px]">
+        <div className="right-32">
           <Anime animeList={animeList} />
           {console.log(animeList)}
         </div>
