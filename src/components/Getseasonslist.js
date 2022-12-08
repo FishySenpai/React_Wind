@@ -30,6 +30,7 @@ const Getseasonslist = () => {
   const handleClick = () => {
     FetchSeasons();
     setYearToggle((prev) => !prev);
+    setSeasonToggle(false);
   };
 
   const handleTest = (e) => {
@@ -54,7 +55,7 @@ const Getseasonslist = () => {
           </button>
           <form className="" onSubmit={handleTest}>
             <div className={`${yearToggle ? "flex" : "hidden"}`}>
-              <div className="h-[300px] absolute overflow-y-auto overflow-x-hidden">
+              <div className="h-[300px] absolute overflow-y-auto scrollbar overflow-x-hidden">
                 <div className="flex flex-col w-[150px] bg-white rounded font-normal">
                   {seasonList.slice(0, 50).map((seasons, index) => (
                     <ul className="flex flex-col">
@@ -81,7 +82,7 @@ const Getseasonslist = () => {
         </div>
         <div>
           <button
-            onClick={() => setSeasonToggle((prev) => !prev)}
+            onClick={() => {setSeasonToggle((prev) => !prev); setYearToggle(false)}}
             className="pb-2 text-gray-500 text-lg text-left hover:text-red-500 cursor-pointer"
           >
             Season

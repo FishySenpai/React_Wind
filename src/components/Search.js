@@ -63,7 +63,8 @@ const Search = () => {
               >
                 <div className="flex flex-row space-x-16">
                   <Getgenre />
-                  <Getseasonslist/>
+                  <Getseasonslist
+                  />
                 </div>
               </a>
             ) : (

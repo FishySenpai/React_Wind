@@ -22,11 +22,13 @@ const Spring2022 = ()=>{
               <ul className="flex flex-wrap">
                 {topAnime.slice(0, 24).map((top, index) => (
                   <li className="mr-8 pb-6" key={top.mal_id}>
-                    <img
-                      className="w-[188px] h-[264px] rounded hover:shadow-lg cursor-pointer hover:scale-105"
-                      src={top.images.jpg.large_image_url}
-                      alt="img"
-                    />
+                    <a href={`/topanime/${top.mal_id}`}>
+                      <img
+                        className="w-[188px] h-[264px] rounded hover:shadow-lg cursor-pointer hover:scale-105"
+                        src={top.images.jpg.large_image_url}
+                        alt="img"
+                      />
+                    </a>
                     <div className="w-48 text-gray-500 text-lg text hover:text-red-500 cursor-pointer">
                       <Link to={`/topanime/${top.mal_id}`}>{top.title}</Link>
                     </div>

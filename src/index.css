@@ -16,6 +16,37 @@
   scroll-behavior: smooth;
 }
 
+.scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 16px;
+    
+}
+
+.scrollbar::-webkit-scrollbar-corner,
+.scrollbar::-webkit-scrollbar-track {
+    background-color: white;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+    background-color: gray;
+    border: 2px solid transparent;
+    border-radius: 20px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(112, 112, 112);
+}
+
+.scrollbar::-webkit-scrollbar-thumb:active {
+    background-color: rgb(128, 128, 128);
+}
+
+/* Buttons */
+.scrollbar::-webkit-scrollbar-buttons {
+    background-color: rgb(112, 112, 112);
+
+}
+
 .text {
       overflow: hidden;
       text-overflow: ellipsis;
