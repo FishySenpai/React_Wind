@@ -27,7 +27,7 @@ const Spring2022 = ()=>{
                       src={top.images.jpg.large_image_url}
                       alt="img"
                     />
-                    <div className="w-48 text-gray-500 text-lg hover:text-red-500 cursor-pointer">
+                    <div className="w-48 text-gray-500 text-lg text hover:text-red-500 cursor-pointer">
                       <Link to={`/topanime/${top.mal_id}`}>{top.title}</Link>
                     </div>
                   </li>

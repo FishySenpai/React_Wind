@@ -8,9 +8,7 @@ import TopAnimeInfo from "./TopAnimeInfo";
 import {AnimeContext} from "./AnimeContext"
 import Spring2022 from "./Seasons/Spring2022";
 import Search from "./Search";
-import SearchAnime from "./SearchAnime";
 import Getgenre from "./Getgenre";
-import Searchbar from "./Searchbar";
 import ShowGenre from "./ShowGenre";
 import Seasons from "./Seasons";
 import Login from "./Login and Registration/Login"
@@ -28,9 +26,7 @@ export {
     AnimeContext,
     Spring2022,
     Search,
-    SearchAnime,
     Getgenre,
-    Searchbar,
     ShowGenre,
     Seasons,
     Login,

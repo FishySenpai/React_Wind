@@ -16,8 +16,13 @@
   scroll-behavior: smooth;
 }
 
-
-
+.text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+}
 .text-gradient {
   background: radial-gradient(
     64.18% 64.18% at 71.16% 35.69%,
@@ -34,7 +39,7 @@
 }
 
 .bg-main {
-  background: rgb(237,241,245);
+  background: rgb(237, 241, 245);
   width: 100%;
   height: 100%;
 }
@@ -69,7 +74,11 @@
 }
 
 .bg-gray-gradient {
-  background: linear-gradient(to right, rgb(67, 76, 90) 0%, rgba(20, 20, 20, 0.363) 100%);
+  background: linear-gradient(
+    to right,
+    rgb(67, 76, 90) 0%,
+    rgba(20, 20, 20, 0.363) 100%
+  );
 }
 
 .bg-discount-gradient {
