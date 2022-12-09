@@ -2,12 +2,16 @@ import { useState } from "react";
 import { img1, menu, close } from "../assets";
 import { Link, useNavigate} from "react-router-dom";
 import {navLinks} from "../constants/index"
-import Search from "./Search";
 import styles from "../styles";
-import Getgenre from "./Getgenre";
+import { UserContext } from "./Contexts/UserContext";
+import Profile from "./Login and Registration/Profile";
+import Login from "./Login and Registration/Login";
+
 
 const Navbar = (props) => {
     const [toggle, setToggle] = useState(false);
+    const [profile, setProfile] = useState("Login");
+    const [showProfile, setShowProfile] = useState(false);
     const navigate = useNavigate();
     const handleClick = () => {
       navigate(0);
@@ -44,7 +48,13 @@ const Navbar = (props) => {
                     onClick={handleClick}
                     className="font-mono cursor-pointer text-[16px] text-white hover:text-red-400 mr-10"
                   >
-                    <Link to="/login">Login</Link>
+                    <Link to="/login">
+                      <UserContext.Provider
+                        value={{ profile, setProfile, setShowProfile }}
+                      >
+                        {showProfile ? <Profile /> : "Login"}
+                      </UserContext.Provider>
+                    </Link>
                   </button>
                 </ul>
 
