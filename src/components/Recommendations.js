@@ -17,12 +17,11 @@ const Recommendations = () => {
     useEffect(() => {
       const Relations = async (query) => {
         const temp = await fetch(
-          `https://api.jikan.moe/v4/recommendations/anime`
+          `https://api.jikan.moe/v4/anime/${mal_id}/recommendations`
         ).then((res) => res.json());
         setAnimeList(temp.data);
         console.log(temp.data);
       };
-    
       return () => {
         Relations();
       }
@@ -34,19 +33,20 @@ const Recommendations = () => {
          <div className="px-6 items-center mx-auto container justify-between">
            <div className="p-6 pt-12 items-center container justify-between">
              <ul className="flex flex-wrap">
-               {animeList.slice(0,6).map((top, index) => (
-                 <li className="mr-8 pb-6" key={top.mal_id}>
-                   <a href={`/topanime/${top.mal_id}`}>
+               {animeList.slice(0, 6).map((rec, index) => (
+                 <li className="mr-8 pb-6" key={rec.entry.mal_id}>
+                   <a href={`/topanime/${rec.entry.mal_id}`}>
+                     {console.log(animeList.entry)}
                      <img
                        className="w-[188px] h-[264px] rounded hover:shadow-lg cursor-pointer hover:scale-105"
-                       src={top.images?.jpg.large_image_url}
+                       src={rec.entry.images?.jpg.large_image_url}
                        alt="img"
                      />
                    </a>
                    <div className="w-48 text-gray-500 text-lg hover:text-red-500 cursor-pointer">
                      <button onClick={handleClick}>
-                       <Link className="text" to={`/topanime/${top.mal_id}`}>
-                         {top.title}
+                       <Link className="text" to={`/topanime/${rec.entry.mal_id}`}>
+                         {rec.entry.title}
                        </Link>
                      </button>
                    </div>

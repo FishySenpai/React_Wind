@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import {useFetch} from "./Getdata";
+import Recommendations from "./Recommendations";
 const TopAnimeInfo = () => {
   const {mal_id} = useParams();
   const url = `https://api.jikan.moe/v4/anime/${mal_id}`;
@@ -17,7 +18,6 @@ const TopAnimeInfo = () => {
             src={images.jpg.large_image_url}
             alt="img"
           />
-
           <div className="p-6 mx-auto container flex md:flex-row sm:flex-col">
             <img
               className="w-[215px] h-[300px] absolute rounded top-[250px]"
@@ -75,6 +75,7 @@ const TopAnimeInfo = () => {
             </div>
           </div>
         </div>
+        <Recommendations/>
       </div>
     );
   }
