@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { img1, menu, close } from "../assets";
 import { Link, useNavigate} from "react-router-dom";
 import {navLinks} from "../constants/index"
@@ -10,12 +10,12 @@ import Login from "./Login and Registration/Login";
 
 const Navbar = (props) => {
     const [toggle, setToggle] = useState(false);
-    const [profile, setProfile] = useState("Login");
-    const [showProfile, setShowProfile] = useState(false);
+    const { profile, setProfile, showProfile, setShowProfile } = useContext(UserContext);
     const navigate = useNavigate();
     const handleClick = () => {
       navigate(0);
     };
+    console.log(profile)
     return (
       <div>
         <div className="bg-gray-700 w-full overflow-hidden">
@@ -48,12 +48,8 @@ const Navbar = (props) => {
                     onClick={handleClick}
                     className="font-mono cursor-pointer text-[16px] text-white hover:text-red-400 mr-10"
                   >
-                    <Link to="/login">
-                      <UserContext.Provider
-                        value={{ profile, setProfile, setShowProfile }}
-                      >
-                        {showProfile ? <Profile /> : "Login"}
-                      </UserContext.Provider>
+                    <Link to="/login">                  
+                        {profile}
                     </Link>
                   </button>
                 </ul>

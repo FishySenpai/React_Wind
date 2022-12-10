@@ -6,9 +6,10 @@ import Axios from 'axios';
 import Profile from './Profile';
 
 const Login = () => {
-  const {setProfile, setShowProfile} = useContext(UserContext);
+  const {profile, setProfile, setShowProfile} = useContext(UserContext);
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
+  const navigate = useNavigate();
 
   const login = () => {
     Axios.post("http://localhost:3001/login", {
@@ -17,6 +18,8 @@ const Login = () => {
     }).then((response) => {
       console.log(response);
     });
+    setProfile(username);
+    navigate("/")
   };
   return (
     <div className="relative flex flex-col justify-center min-h-screen ">

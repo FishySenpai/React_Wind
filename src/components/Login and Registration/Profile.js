@@ -1,12 +1,14 @@
 import React, {useContext} from 'react'
-import { useParams } from 'react-router-dom';
 import { UserContext } from "../Contexts/UserContext";
 import { Navigate } from 'react-router-dom';
-const Profile = ({username}) => {
-    Navigate("/")
+const Profile = () => {
+    const { profile, setProfile, setShowProfile } = useContext(UserContext);
   return (
-    <div>{username}</div>
-  )
+    <div>
+      {profile}
+      {console.log(profile)}
+    </div>
+  );
 }
 
 export default Profile;
