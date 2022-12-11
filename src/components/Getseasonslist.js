@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Anime from "./Anime";
-import Seasons from "./Seasons";
+import { UserContext } from "./Contexts/UserContext";
 
 const Getseasonslist = () => {
   const [year, setYear] = useState(2022);
   const [season, setSeason] = useState("Spring");
-  const [seasons, setSeasons] = useState();
-  const [yearToggle, setYearToggle] = useState(false);
-  const [seasonToggle, setSeasonToggle] = useState(false);
+  const { showGenre, setShowGenre, yearToggle, setYearToggle, seasonToggle, setSeasonToggle } = useContext(UserContext);
   const [seasonList, setSeasonList] = useState([]);
   const navigate = useNavigate();
   const [animeList, setAnimeList] = useState([]);
@@ -31,6 +29,7 @@ const Getseasonslist = () => {
     FetchSeasons();
     setYearToggle((prev) => !prev);
     setSeasonToggle(false);
+    setShowGenre(false);
   };
 
   const handleTest = (e) => {
@@ -82,7 +81,7 @@ const Getseasonslist = () => {
         </div>
         <div>
           <button
-            onClick={() => {setSeasonToggle((prev) => !prev); setYearToggle(false)}}
+            onClick={() => {setSeasonToggle((prev) => !prev); setYearToggle(false); setShowGenre(false);}}
             className="pb-2 text-gray-500 text-lg text-left hover:text-red-500 cursor-pointer"
           >
             Season

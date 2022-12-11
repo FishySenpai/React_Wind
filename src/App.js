@@ -4,10 +4,24 @@ import { Navbar, Summer2022, Anime, TopAnime, TopAnimeInfo, Spring2022, Search, 
 
 const App = () => {
   const [showProfile, setShowProfile] = useState(false);
+  const [showGenre, setShowGenre] = useState(false);
+  const [yearToggle, setYearToggle] = useState(false);
+  const [seasonToggle, setSeasonToggle] = useState(false);
   const [profile, setProfile] = useState('Login');
   return (
     <UserContext.Provider
-      value={{ profile, setProfile, showProfile, setShowProfile }}
+      value={{
+        profile,
+        setProfile,
+        showProfile,
+        setShowProfile,
+        showGenre,
+        setShowGenre,
+        yearToggle,
+        setYearToggle,
+        seasonToggle,
+        setSeasonToggle,
+      }}
     >
       <div className="bg-main">
         <Navbar />

@@ -1,18 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useFetch } from "./Getdata";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import Anime from "./Anime";
-import ShowGenre from "./ShowGenre";
+import { UserContext } from "./Contexts/UserContext";
 
 const Getgenre = () => {
   const [genre, setGenre] = useState();
-  const [toggle, setToggle] = useState(false);
+  const {
+    showGenre,
+    setShowGenre,
+    yearToggle,
+    setYearToggle,
+    seasonToggle,
+    setSeasonToggle,
+  } = useContext(UserContext);
   const navigate = useNavigate();
   const [animeList, setAnimeList] = useState([]);
 
   const handleSubmit = (e) => {
     if (animeList) {
-      setToggle(!toggle);
+      setShowGenre(!showGenre);
+      setYearToggle(false);
+      setSeasonToggle(false);
       console.log(genre)
       FetchGenre();
       
@@ -23,7 +31,7 @@ const Getgenre = () => {
   };
 
   const handleClick = () => {
-    setToggle(false);
+    setShowGenre(false);
     setGenre(genre.mal_id);
     navigate(`/search/anime/genre/${genre}`);
   }
@@ -47,7 +55,7 @@ const Getgenre = () => {
           >
             Genre
           </button>
-          <div className={`${toggle ? "flex" : "hidden"}`}>
+          <div className={`${showGenre? "flex" : "hidden"}`}>
             <div className="flex flex-col h-[300px] absolute overflow-y-auto scrollbar bg-white rounded font-normal">
               {animeList.map((genre, index) => (
                 <ul className="flex flex-col">
