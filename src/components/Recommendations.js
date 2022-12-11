@@ -25,7 +25,7 @@ const Recommendations = () => {
       return () => {
         Relations();
       }
-    }, [mal_id])
+    }, [])
     
    if (recList) {
      return (
