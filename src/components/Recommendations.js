@@ -10,17 +10,16 @@ const Recommendations = () => {
       navigate(0);
     };
     
+    const Relations = async (query) => {
+      const temp = await fetch(
+        `https://api.jikan.moe/v4/anime/1/recommendations`
+      ).then((res) => res.json());
+      setRecList(temp.data);
+      console.log(temp.data);
+    };
+
     useEffect(() => {
-      const Relations = async (query) => {
-        const temp = await fetch(
-          `https://api.jikan.moe/v4/anime/1/recommendations`
-        ).then((res) => res.json());
-        setRecList(temp.data);
-        console.log(temp.data);
-      };
-      return () => {
-        Relations();
-      }
+        Relations();   
     }, [])
     
    if (recList) {
@@ -31,7 +30,7 @@ const Recommendations = () => {
              <ul className="flex flex-wrap">
                {recList.slice(0, 6).map((rec, index) => (
                  <li className="mr-8 pb-6" key={rec.entry.mal_id}>
-                   <a href={`/topanime/${rec.entry.mal_id}`}>
+                   <a href={`/topanime`}>
                      {console.log(recList.entry)}
                      <img
                        className="w-[188px] h-[264px] rounded hover:shadow-lg cursor-pointer hover:scale-105"
@@ -41,7 +40,7 @@ const Recommendations = () => {
                    </a>
                    <div className="w-48 text-gray-500 text-lg hover:text-red-500 cursor-pointer">
                      <button onClick={handleClick}>
-                       <Link className="text" to={`/topanime/${rec.entry.mal_id}`}>
+                       <Link className="text" to={`/topanime`}>
                          {rec.entry.title}
                        </Link>
                      </button>
