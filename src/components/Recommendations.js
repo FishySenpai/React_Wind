@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
-import Anime from './Anime';
-
-
-
 const Recommendations = () => {
     const [recList, setRecList] = useState();
     const {mal_id} = useParams();
@@ -17,7 +13,7 @@ const Recommendations = () => {
     useEffect(() => {
       const Relations = async (query) => {
         const temp = await fetch(
-          `https://api.jikan.moe/v4/anime/${mal_id}/recommendations`
+          `https://api.jikan.moe/v4/anime/1/recommendations`
         ).then((res) => res.json());
         setRecList(temp.data);
         console.log(temp.data);

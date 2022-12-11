@@ -77,7 +77,6 @@ const TopAnimeInfo = () => {
             </div>
           </div>
         </div>
-        <Recommendations/>
       </div>
     );
   }

@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { Route, Routes } from "react-router-dom";
 import { Navbar, Summer2022, Anime, TopAnime, TopAnimeInfo, Spring2022, Search, ShowGenre, Login, Registration, UserContext, Profile} from "./components";
+import Recommendations from "./components/Recommendations";
 
 const App = () => {
   const [showProfile, setShowProfile] = useState(false);
@@ -25,6 +26,7 @@ const App = () => {
     >
       <div className="bg-main">
         <Navbar />
+        <Recommendations/>
         <div>
           <Routes>
             <Route
