@@ -12,7 +12,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const login = () => {
-    Axios.post("http://localhost:3001/login", {
+    Axios.post("http://localhost:5000/login", {
       username: username,
       password: password,
     }).then((response) => {
