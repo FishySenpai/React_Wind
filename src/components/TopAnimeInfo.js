@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import {useFetch} from "./Getdata";
 import Recommendations from "./Recommendations";
+import Reviews from "./Reviews";
 const TopAnimeInfo = () => {
   const {mal_id} = useParams();
   const url = `https://api.jikan.moe/v4/anime/${mal_id}`;
@@ -72,6 +73,7 @@ const TopAnimeInfo = () => {
             <div className="flex sm:flex-row md:flex-col pt-16 mx-12">
               <div className="text-2xl">{title}</div>
               <div className="py-5">{synopsis}</div>
+              <Reviews/>
             </div>
           </div>
         </div>
