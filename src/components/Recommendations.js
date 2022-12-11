@@ -6,10 +6,10 @@ import Anime from './Anime';
 
 
 const Recommendations = () => {
-    const [animeList, setAnimeList] = useState();
+    const [recList, setRecList] = useState();
     const {mal_id} = useParams();
     const navigate = useNavigate();
-    console.log(animeList);
+    console.log(recList);
     const handleClick = () => {
       navigate(0);
     };
@@ -19,7 +19,7 @@ const Recommendations = () => {
         const temp = await fetch(
           `https://api.jikan.moe/v4/anime/${mal_id}/recommendations`
         ).then((res) => res.json());
-        setAnimeList(temp.data);
+        setRecList(temp.data);
         console.log(temp.data);
       };
       return () => {
@@ -27,16 +27,16 @@ const Recommendations = () => {
       }
     }, [mal_id])
     
-   if (animeList) {
+   if (recList) {
      return (
        <div>
          <div className="px-6 items-center mx-auto container justify-between">
            <div className="p-6 pt-12 items-center container justify-between">
              <ul className="flex flex-wrap">
-               {animeList.slice(0, 6).map((rec, index) => (
+               {recList.slice(0, 6).map((rec, index) => (
                  <li className="mr-8 pb-6" key={rec.entry.mal_id}>
                    <a href={`/topanime/${rec.entry.mal_id}`}>
-                     {console.log(animeList.entry)}
+                     {console.log(recList.entry)}
                      <img
                        className="w-[188px] h-[264px] rounded hover:shadow-lg cursor-pointer hover:scale-105"
                        src={rec.entry.images?.jpg.large_image_url}
