@@ -26,7 +26,6 @@ const App = () => {
     >
       <div className="bg-main">
         <Navbar />
-        <Recommendations/>
         <div>
           <Routes>
             <Route

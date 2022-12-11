@@ -12,17 +12,16 @@ const Reviews = () => {
     navigate(0);
   };
 
+const Review = async (query) => {
+  const temp = await fetch(
+    `https://api.jikan.moe/v4/anime/${mal_id}/reviews`
+  ).then((res) => res.json());
+  setRevList(temp.data);
+  console.log(temp.data);
+};
+
   useEffect(() => {
-    const Relations = async (query) => {
-      const temp = await fetch(
-        `https://api.jikan.moe/v4/anime/${mal_id}/reviews`
-      ).then((res) => res.json());
-      setRevList(temp.data);
-      console.log(temp.data);
-    };
-    return () => {
-      Relations();
-    };
+      Review();
   }, []);
 
   if (revList) {
