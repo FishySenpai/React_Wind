@@ -5,11 +5,12 @@ import Anime from "./Anime";
 
 const Reviews = () => {
   const [revList, setRevList] = useState();
+  const [revToggle, setRevToggle]= useState(false);
   const { mal_id } = useParams();
   const navigate = useNavigate();
   console.log(revList);
   const handleClick = () => {
-    navigate(0);
+    setRevToggle(!revToggle);
   };
 
 const Review = async (query) => {
@@ -20,6 +21,7 @@ const Review = async (query) => {
   console.log(temp.data);
 };
 
+
   useEffect(() => {
       Review();
   }, []);
@@ -29,11 +31,12 @@ const Review = async (query) => {
       <div>
         <div className="px-6 items-center mx-auto container justify-between">
           <div className="p-6 pt-12 items-center container justify-between">
+            <div className="text-2xl py-5">Reviews</div>
             <ul className="flex flex-wrap">
-              {revList.slice(0, 1).map((rev, index) => (
+              {revList.slice(0, 5).map((rev, index) => (
                 <li className="mr-8 pb-6" key={rev.mal_id}>
                   <div className="text-gray-600 text-md">
-                    <a href="/">
+                    <a href={rev.user.url}>
                       {console.log(revList.user)}
                       <img
                         className="w-16 h-16 rounded-full"
@@ -41,10 +44,12 @@ const Review = async (query) => {
                         alt="img"
                       />
                     </a>
-                    
-                      {rev.review}
-                      {rev.tags}
-                    
+                    <div className="text-xl space-x-24">{rev.tags}</div>
+                    <button onClick={handleClick}>
+                      <div className={`${revToggle ? "flex" : "text"}`}>
+                        {rev.review}
+                      </div>
+                    </button>
                   </div>
                 </li>
               ))}
