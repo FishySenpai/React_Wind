@@ -5,9 +5,9 @@ import Recommendations from "./Recommendations";
 import Reviews from "./Reviews";
 const TopAnimeInfo = () => {
   const {mal_id} = useParams();
-  const url = `https://api.jikan.moe/v4/anime/${mal_id}`;
+  const url = `https://api.jikan.moe/v4/anime/${mal_id}/full`;
   const { topAnime, loading } = useFetch(url);
-  const {title, score, scored_by, images, synopsis,rank, popularity, members, favorites, aired, type, season, year, genres} = topAnime;
+  const {title, score, scored_by, images, synopsis,rank, popularity, members, favorites, aired, type, season, year, genres, relations} = topAnime;
   console.log(topAnime);
 
   if(images){
@@ -73,11 +73,16 @@ const TopAnimeInfo = () => {
             <div className="flex sm:flex-row md:flex-col pt-16 mx-12">
               <div className="text-2xl">{title}</div>
               <div className="py-5">{synopsis}</div>
-              <Reviews/>
+              <div>{relations.map((rel, index)=>(
+                <ul>
+                  <li>{rel.entry.name}</li>
+                  {console.log(rel.entry)}
+                </ul>
+              ))}</div>
             </div>
           </div>
         </div>
-        <Recommendations/>
+        
       </div>
     );
   }
