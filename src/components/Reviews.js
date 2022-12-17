@@ -35,15 +35,19 @@ const Review = async (query) => {
               {revList.slice(0, 5).map((rev, index) => (
                 <li className="mr-8 pb-6" key={rev.mal_id}>
                   <div className="text-gray-600 text-md">
-                    <a href={rev.user.url}>
-                      {console.log(revList.user)}
-                      <img
-                        className="w-16 h-16 rounded-full"
-                        src={rev.user.images?.jpg.image_url}
-                        alt="img"
-                      />
-                    </a>
-                    <div className="text-xl space-x-24">{rev.tags}</div>
+                    <div className="flex flex-row">
+                      <a href={rev.user.url}>
+                        {console.log(revList.user)}
+                        <img
+                          className="w-16 h-16 rounded-full"
+                          src={rev.user.images?.jpg.image_url}
+                          alt="img"
+                        />
+                      </a>
+                      <div className="text-[16px] space-x-24 p-4 text-gray-800 font-medium">
+                        {rev.tags.slice(0, 1)}
+                      </div>
+                    </div>
                     <button onClick={handleClick}>
                       <div className={`${revToggle ? "flex" : "text"}`}>
                         {rev.review}
