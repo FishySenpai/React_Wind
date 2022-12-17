@@ -20,7 +20,7 @@ const Recommendations = () => {
 
     useEffect(() => {
         Relations();   
-    }, [])
+    }, [mal_id])
     
    if (recList) {
      return (

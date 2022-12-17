@@ -21,10 +21,9 @@ const Review = async (query) => {
   console.log(temp.data);
 };
 
-
   useEffect(() => {
       Review();
-  }, []);
+  }, [mal_id]);
 
   if (revList) {
     return (

@@ -26,6 +26,9 @@ const TopAnimeInfo = () => {
               alt="img"
             />
             <div className="mt-44">
+              <div>
+                <Link to="/">Reviews</Link>
+              </div>
               <div className="w-[210px] pl-2 space-y-1 bg-white rounded pb-6 mb-6">
                 <div>
                   <div className="text-cyan-900 font-semibold">Format: </div>
@@ -73,16 +76,28 @@ const TopAnimeInfo = () => {
             <div className="flex sm:flex-row md:flex-col pt-16 mx-12">
               <div className="text-2xl">{title}</div>
               <div className="py-5">{synopsis}</div>
-              <div>{relations.map((rel, index)=>(
+              <div>
                 <ul>
-                  <li>{rel.entry.name}</li>
-                  {console.log(rel.entry)}
+                  {console.log(relations)}
+                  {relations.map((rel, index) => (
+                    <li>
+                      <div className="text-xl">{rel.relation}</div>
+                      {rel.entry.map((ent, index) => (
+                        <ul className="flex flex-row space-x-4">
+                          <li className="text-l">{ent.name}</li>
+                          <li className="rounded-sm bg-gray-300 px-2 text-l">
+                            {ent.type}
+                          </li>
+                        </ul>
+                      ))}
+                    </li>
+                  ))}
                 </ul>
-              ))}</div>
+              </div>
             </div>
           </div>
+          <Recommendations />
         </div>
-        
       </div>
     );
   }
