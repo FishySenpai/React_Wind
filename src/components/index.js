@@ -18,6 +18,7 @@ import { UserContext } from "./Contexts/UserContext";
 import Profile from "./Login and Registration/Profile";
 import Upcoming from "./Seasons/Upcoming";
 import Top from "./Seasons/Top";
+import Previous from "./Seasons/Previous";
 
 export {
     Navbar,
@@ -39,5 +40,6 @@ export {
     UserContext,
     Profile,
     Upcoming,
-    Top
+    Top,
+    Previous
 }
