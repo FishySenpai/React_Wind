@@ -47,15 +47,15 @@ const Getgenre = () => {
 
   if (animeList) {
     return (
-      <div className="h-[100px]">
-        <div className="flex flex-col">
+      <div className="">
+        <div className="flex flex-col px-4">
           <button
             onClick={handleSubmit}
-            className="pb-2 text-gray-500 text-lg hover:text-red-500 cursor-pointer pt-2"
+            className="w-[64px] pb-2 text-gray-500 text-lg hover:text-red-500 cursor-pointer pt-2"
           >
             Genre
           </button>
-          <div className={`${showGenre? "flex" : "hidden"}`}>
+          <div className={`${showGenre ? "flex" : "hidden"}`}>
             <div className="flex flex-col h-[300px] absolute overflow-y-auto scrollbar bg-white rounded font-normal">
               {animeList.map((genre, index) => (
                 <ul className="flex flex-col">

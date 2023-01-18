@@ -36,11 +36,11 @@ const Search = () => {
   if (animeList) {
     return (
       <div>
-        <div className="flex flex-row space-x-16 pt-12 justify-center">
+        <div className="flex flex-col md:flex-row space-x-16 pt-12 justify-center">
           <form className="pt-2 h-[80px]" onSubmit={handleSearch}>
             <div className="flex flex-row ">
               <input
-                className="w-[288px] h-[36px] pl-2 shadow rounded-l appearance-none border-gray-500 focus:outline-none "
+                className="w-[288px] h-[36px] ml-4 pl-2 shadow rounded-l appearance-none border-gray-500 focus:outline-none "
                 type="search"
                 placeholder="Search..."
                 value={search}
@@ -54,14 +54,14 @@ const Search = () => {
               </button>
             </div>
           </form>
-          <div className="flex flex-row">
+          <div className="flex flex-col md:flex-row">
             {genre ? (
               <a
                 onClick={() => {
                   setAnimeList([]);
                 }}
               >
-                <div className="flex flex-row space-x-16">
+                <div className="flex flex-row">
                   <Getgenre />
                   <Getseasonslist
                   />

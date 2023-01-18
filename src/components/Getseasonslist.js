@@ -44,10 +44,10 @@ const Getseasonslist = () => {
   };
   if (animeList) {
     return (
-      <div className="flex flex-row pt-2 space-x-16">
+      <div className="flex flex-row pt-2">
         <div>
           <button
-            className="pb-2 text-gray-500 text-lg text-left hover:text-red-500 cursor-pointer"
+            className="px-5 pb-2 text-gray-500 text-lg text-left hover:text-red-500 cursor-pointer"
             onClick={handleClick}
           >
             Year
@@ -82,7 +82,7 @@ const Getseasonslist = () => {
         <div>
           <button
             onClick={() => {setSeasonToggle((prev) => !prev); setYearToggle(false); setShowGenre(false);}}
-            className="pb-2 text-gray-500 text-lg text-left hover:text-red-500 cursor-pointer"
+            className="px-5 pb-2 text-gray-500 text-lg text-left hover:text-red-500 cursor-pointer"
           >
             Season
           </button>
