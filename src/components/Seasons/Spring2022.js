@@ -1,10 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 import { useFetch } from "../Getdata";
 import { Link } from "react-router-dom";
 
 const Spring2022 = ()=>{
       const year = 2022;
       const season = "spring";
+      const [viewAll, setViewAll] = useState(6);
       const url = `https://api.jikan.moe/v4/seasons/${year}/${season}`;
       const { topAnime, loading } = useFetch(url);
       console.log(topAnime);
@@ -16,11 +17,21 @@ const Spring2022 = ()=>{
         );
       } else {
         return (
-          <div className="px-6 items-center mx-auto container justify-between">
-            <div>Spring 2022</div>
-            <div className="p-6 pt-12 items-center container justify-between">
+          <div className="px-6 items-center mx-auto container justify-between pl-12">
+            <div className="text-gray-500 text-2xl ml-6">
+              Spring
+              <button
+                className="text-[16px] sm:ml-96 sm:pl-[770px] "
+                onClick={(e) => {
+                  setViewAll(24);
+                }}
+              >
+                View All
+              </button>
+            </div>
+            <div className="p-6 items-center container justify-between">
               <ul className="flex flex-wrap">
-                {topAnime.slice(0, 24).map((top, index) => (
+                {topAnime.slice(0, viewAll).map((top, index) => (
                   <li className="mr-8 pb-6" key={top.mal_id}>
                     <a href={`/topanime/${top.mal_id}`}>
                       <img

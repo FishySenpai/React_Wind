@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
   const url = "https://api.jikan.moe/v4/seasons/now";
   const year = 2022;
   const season = "spring";
+  const [viewAll, setViewAll] = useState(6);
   const { topAnime, loading } = useFetch(url);
   console.log(topAnime);
   
@@ -19,9 +20,20 @@ import { Link } from "react-router-dom";
     return (
       
         <div className="px-6 items-center mx-auto container justify-between">
+          <div className="text-gray-500 text-2xl pb-4 ml-6">
+            Trending...
+            <button
+              className="text-[16px] sm:ml-96 sm:pl-[770px] "
+              onClick={(e) => {
+                setViewAll(24);
+              }}
+            >
+              View All
+            </button>
+          </div>
           <div className="px-6 items-center container justify-between">
             <ul className="flex flex-wrap">
-              {topAnime.slice(0,24).map((top, index) => (
+              {topAnime.slice(0, viewAll).map((top, index) => (
                 <li className="mr-8 pb-6" key={top.mal_id}>
                   <img
                     className="w-[188px] h-[264px] rounded hover:shadow-lg cursor-pointer hover:scale-105"

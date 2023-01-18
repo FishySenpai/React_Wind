@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { Route, Routes } from "react-router-dom";
-import { Navbar, Summer2022, Anime, TopAnime, TopAnimeInfo, Spring2022, Search, ShowGenre, Login, Registration, UserContext, Profile} from "./components";
+import { Navbar, Summer2022, Anime, TopAnime, TopAnimeInfo, Spring2022, Search, ShowGenre, Login, Registration, UserContext, Profile, Upcoming, Top} from "./components";
 import Recommendations from "./components/Recommendations";
 
 const App = () => {
@@ -35,6 +35,8 @@ const App = () => {
                   <Search />
                   <Summer2022 />
                   <Spring2022 />
+                  <Upcoming/>
+                  <Top/>
                 </>
               }
             />
@@ -86,7 +88,7 @@ const App = () => {
                 </>
               }
             />
-            
+
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Registration />} />
             <Route path="/user" element={<Profile />} />

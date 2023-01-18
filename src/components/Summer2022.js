@@ -7,7 +7,7 @@ const  summer2022 = ()=> {
       <div className="">
         <div className="flex text-gray-500 text-2xl hover:text-red-500 cursor-pointer ml-16 md:ml-40 lg:ml-64 pt-4 w-48"></div>
         <div className="flex ml-16 md:ml-40 lg:ml-64 pt-4 w-48">
-          <div className="flex flex-col"></div>
+          
         </div>
         <div className="px-6 items-center mx-auto container justify-between">
           <Getanime />

@@ -16,6 +16,8 @@ import Registration from "./Login and Registration/Registration";
 import Getseasonslist from "./Getseasonslist";
 import { UserContext } from "./Contexts/UserContext";
 import Profile from "./Login and Registration/Profile";
+import Upcoming from "./Seasons/Upcoming";
+import Top from "./Seasons/Top";
 
 export {
     Navbar,
@@ -35,5 +37,7 @@ export {
     Getseasonslist,
     Registration,
     UserContext,
-    Profile
+    Profile,
+    Upcoming,
+    Top
 }
