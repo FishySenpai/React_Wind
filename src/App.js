@@ -34,7 +34,6 @@ const App = () => {
                 <>
                   <Search />
                   <Summer2022 />
-                  <Spring2022 />
                   <Upcoming/>
                   <Top/>
                 </>

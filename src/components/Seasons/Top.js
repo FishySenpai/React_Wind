@@ -7,13 +7,7 @@ const Top = () => {
   const url = `https://api.jikan.moe/v4/top/anime`;
   const { topAnime, loading } = useFetch(url);
   console.log(topAnime);
-  if (loading) {
-    return (
-      <div className="flex justify-center">
-        <img src="giphy.gif" alt="nothing" />
-      </div>
-    );
-  } else {
+  
     return (
       <div className="px-6 items-center mx-auto container justify-between pl-12">
         <div className="text-gray-500 text-2xl ml-6">
@@ -48,6 +42,5 @@ const Top = () => {
       </div>
     );
   }
-};
 
 export default Top;
