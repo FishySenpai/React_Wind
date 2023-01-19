@@ -22,7 +22,7 @@ const Recommendations = () => {
         Relations();   
     }, [mal_id])
     
-   if (recList>0) {
+   if (recList) {
      return (
        <div>
          <div className="px-6 items-center mx-auto container justify-between">

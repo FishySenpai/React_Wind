@@ -25,14 +25,14 @@ const Review = async (query) => {
       Review();
   }, [mal_id]);
 
-  if (revList>0) {
+  if (revList) {
     return (
       <div>
         <div className="px-6 items-center mx-auto container justify-between">
           <div className="p-6 pt-12 items-center container justify-between">
             <div className="text-2xl py-5">Reviews</div>
             <ul className="flex flex-wrap">
-              {revList.slice(0, 5).map((rev, index) => (
+              {revList.slice(0, 3).map((rev, index) => (
                 <li className="mr-8 pb-6" key={rev.mal_id}>
                   <div className="text-gray-600 text-md">
                     <div className="flex flex-row">
