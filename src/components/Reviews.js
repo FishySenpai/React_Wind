@@ -25,7 +25,7 @@ const Review = async (query) => {
       Review();
   }, [mal_id]);
 
-  if (revList) {
+  if (revList>0) {
     return (
       <div>
         <div className="px-6 items-center mx-auto container justify-between">
