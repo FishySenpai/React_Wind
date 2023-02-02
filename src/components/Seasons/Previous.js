@@ -16,9 +16,9 @@ const Previous = () => {
     );
   } else {
     return (
-      <div className="px-6 items-center mx-auto container justify-between pl-12">
+      <div className="px-6 items-center mx-auto container justify-between">
         <div className="text-gray-500 text-2xl ml-6">Previous</div>
-        <div className="p-6 items-center container justify-between">
+        <div className="p-2 sm:p-6 items-center container justify-between">
           <ul className="flex flex-wrap">
             {topAnime.slice(0, 24).map((top, index) => (
               <li className="mr-4 md:mr-8 pb-6" key={top.mal_id}>
