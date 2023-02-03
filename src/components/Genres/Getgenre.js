@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useFetch } from "./Getdata";
+import { useFetch } from "../Getdata";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { UserContext } from "./Contexts/UserContext";
+import { UserContext } from "../Contexts/UserContext";
 
 const Getgenre = () => {
   const [genre, setGenre] = useState();
@@ -21,9 +21,9 @@ const Getgenre = () => {
       setShowGenre(!showGenre);
       setYearToggle(false);
       setSeasonToggle(false);
-      console.log(genre)
+      console.log(genre);
       FetchGenre();
-      
+
       e.preventDefault();
     } else {
       e.preventDefault();
@@ -34,16 +34,15 @@ const Getgenre = () => {
     setShowGenre(false);
     setGenre(genre.mal_id);
     navigate(`/search/anime/genre/${genre}`);
-  }
+  };
 
-  
-    const FetchGenre = async (query) => {
+  const FetchGenre = async (query) => {
     const temp = await fetch(`https://api.jikan.moe/v4/genres/anime`).then(
       (res) => res.json()
     );
     setAnimeList(temp.data);
     console.log(temp.data);
-    };
+  };
 
   if (animeList) {
     return (

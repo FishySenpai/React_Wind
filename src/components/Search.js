@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import Anime from "./Anime";
-import Getgenre from "./Getgenre";
+import Getgenre from "./Genres/Getgenre";
 import Seasons from "./Seasons";
 import Getseasonslist from "./Getseasonslist";
 
@@ -11,17 +11,15 @@ const Search = () => {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
   const [animeList, setAnimeList] = useState([]);
-  const [genre, setGenre] = useState(true)
+  const [genre, setGenre] = useState(true);
 
   const handleSearch = (e) => {
     if (search) {
-      
       navigate(`/search/${search}`);
       FetchAnime(search);
       setGenre(false);
       e.preventDefault();
-    }
-    else{
+    } else {
       e.preventDefault();
     }
   };
@@ -63,8 +61,7 @@ const Search = () => {
               >
                 <div className="flex flex-row">
                   <Getgenre />
-                  <Getseasonslist
-                  />
+                  <Getseasonslist />
                 </div>
               </a>
             ) : (
@@ -83,8 +80,7 @@ const Search = () => {
         {console.log(animeList)}
       </div>
     );
-  }
-   else {
+  } else {
     return (
       <div className="flex justify-center">
         <img src="giphy.gif" alt="nothing" />
