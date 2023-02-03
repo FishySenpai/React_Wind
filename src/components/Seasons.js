@@ -1,3 +1,17 @@
+
+
+
+
+
+//unused file delete later
+
+
+
+
+
+
+
+
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Anime from "./Anime";
@@ -94,7 +108,7 @@ const Seasons = () => {
           </form>
         </div>
         <div className="static">
-          <div className="absolute right-32 pt-8">
+          <div className="right-32">
             <Anime animeList={animeList} />
             {console.log(animeList)}
           </div>

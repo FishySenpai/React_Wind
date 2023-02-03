@@ -11,7 +11,6 @@ const Anime = ({animeList}) => {
     }
   if(animeList){
     return (
-      <div>
         <div className="px-6 items-center mx-auto container justify-between">
           <div className="sm:p-6 pt-12 items-center container justify-between">
             <ul className="flex flex-wrap">
@@ -36,7 +35,7 @@ const Anime = ({animeList}) => {
             </ul>
           </div>
         </div>
-      </div>
+      
     );
   }
   else {
