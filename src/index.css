@@ -16,6 +16,32 @@
   scroll-behavior: smooth;
 }
 
+.animescrollbar::-webkit-scrollbar {
+  overflow-x: hidden;
+    
+}
+
+
+/* Buttons */
+.animescrollbar::-webkit-scrollbar-button:single-button {
+  display: block;
+  border-style: solid;
+ 
+}
+
+.animescrollbar::-webkit-scrollbar-button:single-button-horizontal:increment {
+     height: 12px;
+    width: 16px;
+    background-position: center 4px;
+    background-image: url("assets/arrow-right.png");
+}
+.animescrollbar::-webkit-scrollbar-button:single-button-horizontal:decrement {
+    height: 12px;
+    width: 16px;
+    background-position: center 4px;
+    background-image: url("assets/arrow-right.png");
+}
+
 .scrollbar::-webkit-scrollbar {
     width: 8px;
     height: 16px;
