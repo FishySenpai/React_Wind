@@ -2,25 +2,32 @@ import React from 'react'
 import { useState, useContext } from 'react';
 import { UserContext } from '../Contexts/UserContext';
 import { Link, useNavigate } from 'react-router-dom';
-import Axios from 'axios';
-import Profile from './Profile';
+import { db } from '../../firebaseConfig';
+import {
+  collection,
+  getDocs,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  doc,
+} from "firebase/firestore";
 
 const Login = () => {
   const {profile, setProfile, setShowProfile} = useContext(UserContext);
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   const navigate = useNavigate();
+  const [users, setUsers] = useState([]);
 
-  const login = () => {
-    Axios.post("http://localhost:5000/login", {
-      username: username,
-      password: password,
-    }).then((response) => {
-      console.log(response);
-    });
-    setProfile(username);
-    navigate("/")
-  };
+  const usersCollectionRef = collection(db, "users");
+
+   const getUser = async () => {
+     const data = await getDocs(usersCollectionRef);
+     setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+     setProfile(username);
+     navigate("/");
+   };
+
   return (
     <div className="relative flex flex-col justify-center min-h-screen ">
       <div className="w-full p-6 m-auto mt-36 bg-gray-500 rounded-md shadow-md lg:max-w-xl">
@@ -60,7 +67,7 @@ const Login = () => {
         <div className="mt-6">
           <button
             className="w-full px-4 py-2 tracking-wide font-mono cursor-pointer text-[16px] text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-800 focus:outline-none focus:bg-gray-900"
-            onClick={login}
+            onClick={getUser}
           >
             <a href="/">Login</a>
           </button>
