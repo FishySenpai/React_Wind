@@ -27,13 +27,7 @@ const Upcoming = () => {
 
           <div className="md:px-6 items-center container justify-between">
             <ul className="flex flex-wrap">
-              <div className="flex flex-row my-14 overflow-auto animescrollbar " id="btn-left">
-                <button className="" >
-                  <FontAwesomeIcon
-                    className="h-12 w-12 bg-transparent absolute top-64 rounded-full p-3"
-                    icon={faArrowLeft}
-                  />
-                </button>
+              
                 {topAnime.slice(0, viewAll).map((top, index) => (
                   <li className="mr-4 md:mr-8 pb-6" key={top.mal_id}>
                     <a href={`/topanime/${top.mal_id}`}>
@@ -48,10 +42,6 @@ const Upcoming = () => {
                     </div>
                   </li>
                 ))}
-                <button>
-                  <FontAwesomeIcon icon={faArrowRight} />
-                </button>
-              </div>
             </ul>
           </div>
         </div>
