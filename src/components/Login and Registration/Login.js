@@ -24,8 +24,8 @@ const Login = () => {
    const getUser = async () => {
      const data = await getDocs(usersCollectionRef);
      setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-     setProfile(username);
-     navigate("/");
+     setProfile(users.username);
+     
    };
 
   return (
@@ -72,7 +72,7 @@ const Login = () => {
             <a href="/">Login</a>
           </button>
         </div>
-
+        <h1>{users.username}</h1>
         <p className="mt-8 font-mono cursor-pointer text-[12px] text-white">
           {" "}
           Don't have an account?{" "}
