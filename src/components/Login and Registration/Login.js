@@ -3,6 +3,7 @@ import { useState, useContext } from 'react';
 import { UserContext } from '../Contexts/UserContext';
 import { Link, useNavigate } from 'react-router-dom';
 import { db } from '../../firebaseConfig';
+import { auth, signInWithGoogle } from "../../firebaseConfig";
 import {
   collection,
   getDocs,
@@ -70,6 +71,14 @@ const Login = () => {
             onClick={getUser}
           >
             <a href="/">Login</a>
+          </button>
+        </div>
+        <div>
+          <button
+            className="bg-slate-600 rounded-sm text-gray-300 text-xl p-4 m-2"
+            onClick={signInWithGoogle}
+          >
+            Sign in With google
           </button>
         </div>
         <h1>{users.username}</h1>

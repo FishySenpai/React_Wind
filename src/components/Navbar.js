@@ -49,7 +49,7 @@ const Navbar = (props) => {
                     className="font-mono cursor-pointer text-[16px] text-white hover:text-red-400 mr-10"
                   >
                     <Link to="/login">                  
-                        {profile}
+                        <Profile/>
                     </Link>
                   </button>
                 </ul>
