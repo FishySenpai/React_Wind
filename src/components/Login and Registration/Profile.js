@@ -19,7 +19,7 @@ const Profile = () => {
       <div className="flex flex-row justify-center items-center">
         <h1 className="hover:text-red-400">
           {user ? (
-            localStorage.getItem("name")
+            localStorage.getItem("name") || user.email?.split("@")[0]
           ) : (
             <Link to="/login" className="text-white ">
               Login

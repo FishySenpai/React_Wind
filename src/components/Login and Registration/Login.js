@@ -1,33 +1,28 @@
-import React from 'react'
-import { useState, useContext } from 'react';
-import { UserContext } from '../Contexts/UserContext';
-import { Link, useNavigate } from 'react-router-dom';
-import { db } from '../../firebaseConfig';
-import { auth, signInWithGoogle } from "../../firebaseConfig";
+import React from "react";
+import { useState, useContext } from "react";
+import {google} from "../../assets"
 import {
-  collection,
-  getDocs,
-  addDoc,
-  updateDoc,
-  deleteDoc,
-  doc,
-} from "firebase/firestore";
+  GoogleAuthProvider,
+  signInWithEmailAndPassword,
+  Goo,
+  signOut,
+} from "firebase/auth";
+import { auth, signInWithGoogle } from "../../firebaseConfig"
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const {profile, setProfile, setShowProfile} = useContext(UserContext);
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   const navigate = useNavigate();
-  const [users, setUsers] = useState([]);
-
-  const usersCollectionRef = collection(db, "users");
-
-   const getUser = async () => {
-     const data = await getDocs(usersCollectionRef);
-     setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-     setProfile(users.username);
-     
-   };
+  const login = async () => {
+    try {
+      const user = await signInWithEmailAndPassword(auth, username, password);
+      console.log(user);
+      navigate("/")
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   return (
     <div className="relative flex flex-col justify-center min-h-screen ">
@@ -68,21 +63,17 @@ const Login = () => {
         <div className="mt-6">
           <button
             className="w-full px-4 py-2 tracking-wide font-mono cursor-pointer text-[16px] text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-800 focus:outline-none focus:bg-gray-900"
-            onClick={getUser}
+            onClick={login}
           >
-            <a href="/">Login</a>
+            Login
           </button>
         </div>
         <div>
-          <button
-            className="bg-slate-600 rounded-sm text-gray-300 text-xl p-4 m-2"
-            onClick={signInWithGoogle}
-          >
-            Sign in With google
+          <button onClick={signInWithGoogle}>
+            <img src={google} className="h-6 w-6 m-2" />
           </button>
         </div>
-        <h1>{users.username}</h1>
-        <p className="mt-8 font-mono cursor-pointer text-[12px] text-white">
+        <p className="font-mono cursor-pointer text-[12px] text-white">
           {" "}
           Don't have an account?{" "}
           <a
@@ -95,6 +86,6 @@ const Login = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Login;
