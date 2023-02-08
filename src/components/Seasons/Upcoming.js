@@ -4,11 +4,10 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 const Upcoming = () => {
-  const [viewAll, setViewAll] = useState();
+  const [viewAll, setViewAll] = useState(6);
   const url = `https://api.jikan.moe/v4/seasons/upcoming`;
   const { topAnime, loading } = useFetch(url);
   console.log(topAnime);
-
 
     return (
       <div className="px-6 items-center mx-auto container justify-between">

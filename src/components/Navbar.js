@@ -46,11 +46,9 @@ const Navbar = (props) => {
                   </button>
                   <button
                     onClick={handleClick}
-                    className="font-mono cursor-pointer text-[16px] text-white hover:text-red-400 mr-10"
-                  >
-                    <Link to="/login">                  
+                    className="font-mono cursor-pointer text-[16px] text-white  mr-10"
+                  >                                    
                         <Profile/>
-                    </Link>
                   </button>
                 </ul>
 
