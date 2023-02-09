@@ -3,13 +3,21 @@ import { Link, useParams } from "react-router-dom";
 import {useFetch} from "./Getdata";
 import Recommendations from "./Recommendations";
 import Reviews from "./Reviews";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import {faStar, regular} from "@fortawesome/free-solid-svg-icons"
+import { UserProfile } from "./Contexts/UserProfile";
 const TopAnimeInfo = () => {
+  const {fav, setFav} = useContext(UserProfile)
   const {mal_id} = useParams();
   const url = `https://api.jikan.moe/v4/anime/${mal_id}`;
   const { topAnime, loading } = useFetch(url);
   const {title, score, scored_by, images, synopsis,rank, popularity, members, favorites, aired, type, season, year, genres} = topAnime;
   console.log(topAnime);
 
+  const userFav=()=>{
+    setFav(mal_id);
+    console.log(fav);
+  }
   if(images){
     return (
       <div className="bg-main font-sans text-gray-500 capitalize flex flex-col">
@@ -71,9 +79,14 @@ const TopAnimeInfo = () => {
               </div>
             </div>
             <div className="flex sm:flex-row md:flex-col pt-16 mx-12">
-              <div className="text-2xl">{title}</div>
+              <div className="text-2xl">
+                {title}
+                <button onClick={userFav}>
+                  <FontAwesomeIcon icon={faStar} className="ml-4" />
+                </button>
+              </div>
               <div className="py-5">{synopsis}</div>
-              <Reviews/>
+              <Reviews />
             </div>
           </div>
           <Recommendations />
