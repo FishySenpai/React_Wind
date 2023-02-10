@@ -6,6 +6,8 @@ import Reviews from "./Reviews";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faStar, regular} from "@fortawesome/free-solid-svg-icons"
 import { UserProfile } from "./Contexts/UserProfile";
+import { doc, setDoc } from "firebase/firestore"; 
+import {db} from "../firebaseConfig"
 const TopAnimeInfo = () => {
   const {fav, setFav} = useContext(UserProfile)
   const {mal_id} = useParams();
@@ -14,9 +16,17 @@ const TopAnimeInfo = () => {
   const {title, score, scored_by, images, synopsis,rank, popularity, members, favorites, aired, type, season, year, genres} = topAnime;
   console.log(topAnime);
 
-  const userFav=()=>{
-    setFav(mal_id);
-    console.log(fav);
+  const userFav= async(e)=>{
+    e.preventDefault();
+// Add a new document in collection "cities"
+try{await setDoc(doc(db, "fav", "L"), {
+    Favourites: {mal_id},
+    
+});}
+catch(err){
+console.log(err)
+}
+  
   }
   if(images){
     return (
