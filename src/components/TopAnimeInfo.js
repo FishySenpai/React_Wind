@@ -6,7 +6,7 @@ import Reviews from "./Reviews";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faStar, regular} from "@fortawesome/free-solid-svg-icons"
 import { UserProfile } from "./Contexts/UserProfile";
-import { doc, setDoc } from "firebase/firestore"; 
+import { addDoc, collection } from "firebase/firestore"; 
 import {db} from "../firebaseConfig"
 const TopAnimeInfo = () => {
   const {fav, setFav} = useContext(UserProfile)
@@ -19,9 +19,8 @@ const TopAnimeInfo = () => {
   const userFav= async(e)=>{
     e.preventDefault();
 // Add a new document in collection "cities"
-try{await setDoc(doc(db, "fav", "L"), {
-    Favourites: {mal_id},
-    
+try{await addDoc(collection(db, "fav"), {
+    mal_id: mal_id,
 });}
 catch(err){
 console.log(err)

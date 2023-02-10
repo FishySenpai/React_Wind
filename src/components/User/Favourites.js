@@ -1,28 +1,33 @@
 import React, { useState, useContext, useEffect } from "react";
 import { UserProfile } from "../Contexts/UserProfile";
 import { db } from "../../firebaseConfig";
-import { doc, collection, getDocs } from "firebase/firestore";
+
+import { doc, getDocs, collection } from "firebase/firestore";
+import { async } from "@firebase/util";
+
 
 const Favourites = () => {
-  const [data, setData] = useState({});
+  const docRef = collection(db, "fav");
 
-  useEffect(() => {
-    const fetchData = async () => {
-      let list = [];
-      try {
-        const querySnapshot = await getDocs(collection(db, "fav"));
-      querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-        list.push(doc.data());
-        })
-        setData(list);
-      } catch(err){
-        console.log(err)
-      }
-    };
-    fetchData();
-  }, []);
-  return <div className="text-black">{console.log(data)}</div>;
+  const [data, setData] = useState([]);
+  
+useEffect(()=>{
+const docSnap = async () => {
+  const favs = await getDocs(docRef);
+  setData(favs.docs.map((doc) => ({ ...doc.data()})));
+};
+docSnap();
+}, [])
+  return <div className="text-black">
+    
+    {data.map((fa)=>{
+      return (
+        <div>
+          {fa.mal_id}
+          </div>
+      )
+    })}
+    </div>;
 };
 
 export default Favourites;
