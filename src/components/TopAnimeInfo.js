@@ -1,33 +1,48 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import {useFetch} from "./Getdata";
+import { useFetch } from "./Getdata";
 import Recommendations from "./Recommendations";
 import Reviews from "./Reviews";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
-import {faStar, regular} from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar, regular } from "@fortawesome/free-solid-svg-icons";
 import { UserProfile } from "./Contexts/UserProfile";
-import { addDoc, collection } from "firebase/firestore"; 
-import {db} from "../firebaseConfig"
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../firebaseConfig";
 const TopAnimeInfo = () => {
-  const {fav, setFav} = useContext(UserProfile)
-  const {mal_id} = useParams();
+  const { fav, setFav } = useContext(UserProfile);
+  const { mal_id } = useParams();
   const url = `https://api.jikan.moe/v4/anime/${mal_id}`;
   const { topAnime, loading } = useFetch(url);
-  const {title, score, scored_by, images, synopsis,rank, popularity, members, favorites, aired, type, season, year, genres} = topAnime;
+  const {
+    title,
+    score,
+    scored_by,
+    images,
+    synopsis,
+    rank,
+    popularity,
+    members,
+    favorites,
+    aired,
+    type,
+    season,
+    year,
+    genres,
+  } = topAnime;
   console.log(topAnime);
 
-  const userFav= async(e)=>{
+  const userFav = async (e) => {
     e.preventDefault();
-// Add a new document in collection "cities"
-try{await addDoc(collection(db, "fav"), {
-    mal_id: mal_id,
-});}
-catch(err){
-console.log(err)
-}
-  
-  }
-  if(images){
+    // Add a new document in collection "cities"
+    try {
+      await addDoc(collection(db, "fav", ), {
+         topAnime,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  if (images) {
     return (
       <div className="bg-main font-sans text-gray-500 capitalize flex flex-col">
         <div className="relative">
@@ -102,8 +117,7 @@ console.log(err)
         </div>
       </div>
     );
-  }
-  else if(loading){
+  } else if (loading) {
     return (
       <div className="flex justify-center">
         <img src="giphy.gif" alt="Loading..." />
