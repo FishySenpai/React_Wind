@@ -5,11 +5,17 @@ import Recommendations from "./Recommendations";
 import Reviews from "./Reviews";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, regular } from "@fortawesome/free-solid-svg-icons";
-import { UserProfile } from "./Contexts/UserProfile";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, doc, setDoc } from "firebase/firestore";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../firebaseConfig";
 import { db } from "../firebaseConfig";
 const TopAnimeInfo = () => {
-  const { fav, setFav } = useContext(UserProfile);
+  const [user, setUser] = useState({});
+  useEffect(() => {
+    onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+  });
   const { mal_id } = useParams();
   const url = `https://api.jikan.moe/v4/anime/${mal_id}`;
   const { topAnime, loading } = useFetch(url);
@@ -30,18 +36,28 @@ const TopAnimeInfo = () => {
     genres,
   } = topAnime;
   console.log(topAnime);
-
-  const userFav = async (e) => {
-    e.preventDefault();
-    // Add a new document in collection "cities"
-    try {
-      await addDoc(collection(db, "fav", ), {
-         topAnime,
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
+useEffect(()=>{
+ const userFav = async () => {
+   
+   // Add a new document in collection "cities"
+   try {
+     await setDoc(doc(db, "users", user.uid), {});
+   } catch (err) {
+     console.log(err);
+   }
+ };
+ userFav();
+})
+ const addFav = async () => {
+   // Add a new document in collection "cities"
+   try {
+     await addDoc(collection(db, "users", user.uid, "favs"), {
+      topAnime
+     });
+   } catch (err) {
+     console.log(err);
+   }
+ };
   if (images) {
     return (
       <div className="bg-main font-sans text-gray-500 capitalize flex flex-col">
@@ -105,7 +121,7 @@ const TopAnimeInfo = () => {
             <div className="flex sm:flex-row md:flex-col pt-16 mx-12">
               <div className="text-2xl">
                 {title}
-                <button onClick={userFav}>
+                <button onClick={addFav}>
                   <FontAwesomeIcon icon={faStar} className="ml-4" />
                 </button>
               </div>

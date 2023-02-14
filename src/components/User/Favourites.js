@@ -1,21 +1,32 @@
 import React, { useState, useContext, useEffect } from "react";
-import { UserProfile } from "../Contexts/UserProfile";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { db } from "../../firebaseConfig";
-import { useFetch } from "../Getdata";
-import { doc, getDocs, collection } from "firebase/firestore";
+import { auth } from "../../firebaseConfig";
+import { doc, getDocs, collection, where } from "firebase/firestore";
 import { Link, useNavigate } from "react-router-dom";
 const Favourites = () => {
-  const docRef = collection(db, "fav");
+  
   const [currentMal, setCurrentMal] = useState([]);
   const [data, setData] = useState([]);
+  const [user, setUser] = useState({});
   const navigate = useNavigate();
   const handleClick=()=>{
     navigate(0);
   }
   useEffect(() => {
+    onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      console.log(user)
+    });
+  });
+  useEffect(() => {
+    
     const docSnap = async () => {
-      const favs = await getDocs(docRef);
+      const favs = await getDocs(
+        collection(db, "users"),
+      );
       setData(favs.docs.map((doc) => ({ ...doc.data() })));
+      console.log(data)
     };
     docSnap();
   }, []);
@@ -23,7 +34,7 @@ const Favourites = () => {
     <div className="px-6 items-center mx-auto container justify-between">
       <div className="sm:p-6 pt-12 items-center container justify-between">
         <ul className="flex flex-wrap">
-          {data.map((top, index) => (
+          {data?.map((top, index) => (
             <li className="mr-4 md:mr-8 pb-6" key={top.topAnime.mal_id}>
               <a href={`/topanime/${top.topAnime.mal_id}`}>
                 <img

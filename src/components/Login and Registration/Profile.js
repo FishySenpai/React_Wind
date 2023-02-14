@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { onAuthStateChanged, signOut } from "firebase/auth";
+import { db } from "../../firebaseConfig";
 import { auth } from "../../firebaseConfig";
+import { doc, setDoc, collection } from "firebase/firestore";
 import { Link } from "react-router-dom";
 const Profile = () => {
   const [user, setUser] = useState({});
@@ -8,6 +10,7 @@ const Profile = () => {
     onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
     });
+    
   });
 
   const logOut = async () => {
