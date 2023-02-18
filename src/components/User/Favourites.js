@@ -35,7 +35,8 @@ const Favourites = () => {
     <div className="px-6 items-center mx-auto container justify-between">
       <div className="sm:p-6 pt-12 items-center container justify-between">
         <div className="text-gray-500 text-2xl py-4">
-          {user.displayName}'s Favourites
+          {localStorage.getItem("name") || user.email?.split("@")[0]}'s
+          Favourites
         </div>
         <ul className="flex flex-wrap">
           {data.map((top) => (
