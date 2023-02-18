@@ -10,7 +10,6 @@ const Profile = () => {
     onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
     });
-    
   });
 
   const logOut = async () => {
@@ -29,6 +28,15 @@ const Profile = () => {
             </Link>
           )}
         </h1>
+      </div>
+      <div>
+        {user ? (
+          <button className="font-mono cursor-pointer text-[16px] text-white hover:text-red-400">
+            <Link to="/fav">Favourites</Link>
+          </button>
+        ) : (
+          <div className="hidden">adf</div>
+        )}
       </div>
       <div>
         <button

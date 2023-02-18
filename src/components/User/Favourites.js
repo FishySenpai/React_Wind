@@ -34,6 +34,9 @@ const Favourites = () => {
   return (
     <div className="px-6 items-center mx-auto container justify-between">
       <div className="sm:p-6 pt-12 items-center container justify-between">
+        <div className="text-gray-500 text-2xl py-4">
+          {user.displayName}'s Favourites
+        </div>
         <ul className="flex flex-wrap">
           {data.map((top) => (
             <li className="mr-4 md:mr-8 pb-6" key={top.topAnime.mal_id}>

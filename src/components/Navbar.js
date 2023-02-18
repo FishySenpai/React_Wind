@@ -9,13 +9,11 @@ import Login from "./Login and Registration/Login";
 
 
 const Navbar = (props) => {
-    const [toggle, setToggle] = useState(false);
-    const { profile, setProfile, showProfile, setShowProfile } = useContext(UserContext);
+    const [toggle, setToggle] = useState(false); 
     const navigate = useNavigate();
     const handleClick = () => {
       navigate(0);
-    };
-    console.log(profile)
+    };  
     return (
       <div>
         <div className="bg-gray-700 w-full overflow-hidden">
@@ -44,11 +42,12 @@ const Navbar = (props) => {
                   >
                     <Link to="/previous">Previous Season</Link>
                   </button>
+                  
                   <button
                     onClick={handleClick}
                     className="font-mono cursor-pointer text-[16px] text-white  mr-10"
-                  >                                    
-                        <Profile/>
+                  >
+                    <Profile />
                   </button>
                 </ul>
 
