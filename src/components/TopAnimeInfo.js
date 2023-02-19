@@ -67,14 +67,14 @@ useEffect(()=>{
             src={images.jpg.large_image_url}
             alt="img"
           />
-          <div className="p-6 mx-auto container flex md:flex-row sm:flex-col">
+          <div className="p-6 mx-auto container flex md:flex-row sm:flex-col flex-col">
             <img
               className="w-[215px] h-[300px] absolute rounded top-[250px]"
               src={images.jpg.large_image_url}
               alt="img"
             />
             <div className="mt-44">
-              <div className="w-[210px] pl-2 space-y-1 bg-white rounded pb-6 mb-6">
+              <div className="w-[210px] pl-2 space-y-1 bg-white rounded pb-6 mb-6 flex flex-row sm:flex-col">
                 <div>
                   <div className="text-cyan-900 font-semibold">Format: </div>
                   {type}
@@ -118,7 +118,7 @@ useEffect(()=>{
                 </div>
               </div>
             </div>
-            <div className="flex sm:flex-row md:flex-col pt-16 mx-12">
+            <div className="flex flex-col sm:flex-col md:flex-col pt-16 mx-12">
               <div className="text-2xl">
                 {title}
                 <button onClick={addFav}>
