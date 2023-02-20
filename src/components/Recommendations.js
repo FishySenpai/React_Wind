@@ -28,7 +28,7 @@ const Recommendations = () => {
          <div className="px-6 items-center mx-auto container justify-between">
            <div className="p-6 pt-12 items-center container justify-between">
             <div className='text-2xl py-5'>Recommendations</div>
-             <ul className="flex flex-wrap">
+             <ul className="flex flex-row sm:flex-wrap overflow-y-auto">
                {recList.slice(0, 6).map((rec, index) => (
                  <li className="mr-8 pb-6" key={rec.entry.mal_id}>
                    <a href={`/topanime/${rec.entry.mal_id}`}>
