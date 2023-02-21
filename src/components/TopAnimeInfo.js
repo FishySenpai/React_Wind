@@ -135,7 +135,7 @@ useEffect(()=>{
                 </button>
               </div>
               <div className="py-5 text-sm">{synopsis}</div>
-              <div className="hidden sm:visible">
+              <div className="">
                 <Reviews />
               </div>
             </div>

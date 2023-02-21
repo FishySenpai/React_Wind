@@ -29,7 +29,7 @@ const Review = async (query) => {
   if (revList) {
     return (
       <div>
-        <div className="px-6 items-center mx-auto container justify-between">
+        <div className="px-6 items-center mx-auto container justify-between hidden sm:block ">
           <div className="p-6 pt-12 items-center container justify-between">
             <div className="text-2xl py-5">Reviews</div>
             <ul className="flex flex-wrap">
@@ -49,7 +49,11 @@ const Review = async (query) => {
                         {rev.tags.slice(0, 1)}
                       </div>
                     </div>
-                    <button onClick={()=>{setRevToggle(!revToggle)}}>
+                    <button
+                      onClick={() => {
+                        setRevToggle(!revToggle);
+                      }}
+                    >
                       <div className={`${revToggle ? "flex" : "text"}`}>
                         {rev.review}
                       </div>
