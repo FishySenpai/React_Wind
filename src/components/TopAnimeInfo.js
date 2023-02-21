@@ -127,15 +127,17 @@ useEffect(()=>{
                 </div>
               </div>
             </div>
-            <div className="flex flex-col sm:flex-col md:flex-col pt-16 mx-12">
+            <div className="flex flex-col sm:flex-col md:flex-col pt-16 sm:mx-12 ">
               <div className="text-2xl">
                 {title}
                 <button onClick={addFav}>
                   <FontAwesomeIcon icon={faStar} className="ml-4" />
                 </button>
               </div>
-              <div className="py-5">{synopsis}</div>
-              <Reviews />
+              <div className="py-5 text-sm">{synopsis}</div>
+              <div className="hidden sm:visible">
+                <Reviews />
+              </div>
             </div>
           </div>
           <div className="overflow-y-auto">

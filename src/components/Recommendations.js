@@ -25,7 +25,7 @@ const Recommendations = () => {
    if (recList) {
      return (
        <div>
-         <div className="px-6 items-center mx-auto container justify-between">
+         <div className="sm:px-6 items-center mx-auto container justify-between">
            <div className="p-6 pt-12 items-center container justify-between">
             <div className='text-2xl py-5'>Recommendations</div>
              <ul className="flex flex-row sm:flex-wrap overflow-y-auto">

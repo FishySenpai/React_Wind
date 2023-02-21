@@ -6,6 +6,7 @@ import Anime from "./Anime";
 const Reviews = () => {
   const [revList, setRevList] = useState();
   const [revToggle, setRevToggle]= useState(false);
+  const [revID, setRevID] = useState();
   const { mal_id } = useParams();
   const navigate = useNavigate();
   console.log(revList);
@@ -48,7 +49,7 @@ const Review = async (query) => {
                         {rev.tags.slice(0, 1)}
                       </div>
                     </div>
-                    <button onClick={handleClick}>
+                    <button onClick={()=>{setRevToggle(!revToggle)}}>
                       <div className={`${revToggle ? "flex" : "text"}`}>
                         {rev.review}
                       </div>
