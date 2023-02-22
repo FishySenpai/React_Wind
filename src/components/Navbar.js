@@ -44,7 +44,7 @@ const Navbar = (props) => {
                   </button>
                   
                   <button
-                    onClick={handleClick}
+                    
                     className="font-mono cursor-pointer text-[16px] text-white  mr-10"
                   >
                     <Profile />
