@@ -15,7 +15,7 @@ const Reviews = () => {
      if (id === revID) {
        setRevToggle(!revToggle);
      } else {
-       setRevToggle(false);
+       setRevToggle(true);
      }
      setRevID(id);
    };
