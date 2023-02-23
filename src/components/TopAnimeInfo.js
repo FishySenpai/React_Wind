@@ -60,13 +60,15 @@ useEffect(()=>{
  };
   if (images) {
     return (
-      <div className="bg-main font-sans text-gray-500 capitalize flex flex-col">
-        <div className="relative">
-          <img
-            className="pt-1 bg-black object-cover w-full h-[375px] blur-sm"
-            src={images.jpg.large_image_url}
-            alt="img"
-          />
+      <div className="bg-main font-sans text-gray-500 capitalize flex flex-col relative">
+        <div className=" ">
+          <div className="">
+            <img
+              className="pt-1 bg-black object-cover w-full h-[375px] blur-sm  "
+              src={images.jpg.large_image_url}
+              alt="img"
+            />
+          </div>
           <div className="p-6 mx-auto container flex md:flex-row sm:flex-col flex-col">
             <img
               className="w-[215px] h-[300px] absolute rounded top-[250px]"

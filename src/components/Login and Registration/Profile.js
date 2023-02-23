@@ -24,8 +24,8 @@ setProfileToggle((prev) => !prev);
     window.localStorage.clear();
   };
   return (
-    <div className="flex flex-row space-x-10">
-      <div className="flex flex-row justify-center items-center fixed top-[52px]">
+    <div className="flex flex-row space-x-10 static">
+      <div className="flex flex-row justify-center items-center  absolute top-[52px]">
         <button onClick={handleClick} className="">
           <h1 className="hover:text-red-400">
             {user ? (
@@ -38,7 +38,7 @@ setProfileToggle((prev) => !prev);
           </h1>
         </button>
         <div className={`${profileToggle ? "flex " : "hidden"}`}>
-          <div className="h-[300px] absolute right-0 top-10 overflow-y-auto scrollbar overflow-x-hidden">
+          <div className="h-[300px] absolute right-0 top-10 ">
             <div className="flex flex-col w-[150px] bg-white rounded font-normal p-2">
               {user ? (
                 <button className="font-mono cursor-pointer text-left text-black hover:text-red-400 pb-1">

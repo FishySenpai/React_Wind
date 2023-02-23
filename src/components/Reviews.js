@@ -10,9 +10,15 @@ const Reviews = () => {
   const { mal_id } = useParams();
   const navigate = useNavigate();
   console.log(revList);
-  const handleClick = () => {
-    setRevToggle(!revToggle);
-  };
+
+   const handleClick = (id) => {
+     if (id === revID) {
+       setRevToggle(!revToggle);
+     } else {
+       setRevToggle(false);
+     }
+     setRevID(id);
+   };
 
 const Review = async (query) => {
   const temp = await fetch(
@@ -49,12 +55,12 @@ const Review = async (query) => {
                         {rev.tags.slice(0, 1)}
                       </div>
                     </div>
-                    <button
-                      onClick={() => {
-                        setRevToggle(!revToggle);
-                      }}
-                    >
-                      <div className={`${revToggle ? "flex" : "text"}`}>
+                    <button onClick={() => handleClick(rev.mal_id)}>
+                      <div
+                        className={`${
+                          rev.mal_id === revID && revToggle ? "flex" : "text"
+                        }`}
+                      >
                         {rev.review}
                       </div>
                     </button>
