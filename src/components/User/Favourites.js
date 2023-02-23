@@ -16,7 +16,7 @@ const Favourites = () => {
     });
   }, [user]);
   useEffect(() => {
-    if (user.uid) {
+    if (user?.uid) {
       try {
         const docRef = collection(db, "users", user.uid, "favs");
 
@@ -30,7 +30,9 @@ const Favourites = () => {
         console.log(err);
       }
     }
-  }, [user.uid]); //use dependency list so useEffect only runs when there is change to useState
+  }, [user?.uid]); //use dependency list so useEffect only runs when there is change to useState
+  
+if (user) {
   return (
     <div className="px-6 items-center mx-auto container justify-between">
       <div className="sm:p-6 pt-12 items-center container justify-between">
@@ -63,7 +65,11 @@ const Favourites = () => {
         </ul>
       </div>
     </div>
-  );
-};
+  )
+} else {
+  navigate("/")
+}
+}
+
 
 export default Favourites;

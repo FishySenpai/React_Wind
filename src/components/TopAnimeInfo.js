@@ -4,13 +4,14 @@ import { useFetch } from "./Getdata";
 import Recommendations from "./Recommendations";
 import Reviews from "./Reviews";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar, regular } from "@fortawesome/free-solid-svg-icons";
+import { faStar, faStarHalfStroke } from "@fortawesome/free-solid-svg-icons";
 import { collection, addDoc, doc, setDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import { db } from "../firebaseConfig";
 const TopAnimeInfo = () => {
   const [user, setUser] = useState({});
+  const [fav, setFav] = useState(false);
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -54,6 +55,7 @@ useEffect(()=>{
      await addDoc(collection(db, "users", user.uid, "favs"), {
       topAnime
      });
+     
    } catch (err) {
      console.log(err);
    }
@@ -133,7 +135,10 @@ useEffect(()=>{
               <div className="text-2xl">
                 {title}
                 <button onClick={addFav}>
-                  <FontAwesomeIcon icon={faStar} className="ml-4" />
+                  <div className="flex flex-row">
+                    <FontAwesomeIcon icon={fav? faStar :faStarHalfStroke} onClick={()=>{setFav(!fav)}} />
+                    
+                  </div>
                 </button>
               </div>
               <div className="py-5 text-sm">{synopsis}</div>

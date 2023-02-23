@@ -2,7 +2,8 @@
 import { initializeApp } from "firebase/app";
 import {getFirestore} from "@firebase/firestore"
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { Navigate } from "react-router-dom";
+import { Navigate} from "react-router-dom";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -32,7 +33,6 @@ export const signInWithGoogle = () => {
       localStorage.setItem("name", name);
       localStorage.setItem("email", email);
       localStorage.setItem("profilePic", profilePic);
-      
     })
     .catch((error) => {
       console.log(error);
