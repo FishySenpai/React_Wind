@@ -25,7 +25,7 @@ setProfileToggle((prev) => !prev);
   };
   return (
     <div className="flex flex-row space-x-10 static">
-      <div className="flex flex-row justify-center items-center  absolute top-[52px]">
+      <div className="flex flex-row justify-center items-center  absolute top-[52px] z-50">
         <button onClick={handleClick} className="">
           <h1 className="hover:text-red-400">
             {user ? (
