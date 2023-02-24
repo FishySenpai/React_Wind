@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { Route, Routes } from "react-router-dom";
-import { Navbar, Summer2022, Anime, TopAnime, TopAnimeInfo, Spring2022, Search, ShowGenre, Login, Registration, UserContext, Profile, Upcoming, Top, Previous, Favourites} from "./components";
+import { Navbar, Summer2022, Anime, TopAnime, TopAnimeInfo, Spring2022, Search, ShowGenre, Login, Registration, UserContext, Profile, Upcoming, Top, Previous, Favourites, Footer} from "./components";
 import { UserProfile } from "./components/Contexts/UserProfile";
 
 
@@ -39,6 +39,7 @@ const App = () => {
                     <Summer2022 />
                     <Upcoming />
                     <Top />
+                    <Footer/>
                   </>
                 }
               />
@@ -60,6 +61,7 @@ const App = () => {
                   <>
                     <Search />
                     <Anime />
+                    
                   </>
                 }
               />
@@ -97,6 +99,7 @@ const App = () => {
               <Route path="/fav" element={<Favourites/>}/>
             </Routes>
           </div>
+          
         </div>
       </UserProfile.Provider>
     </UserContext.Provider>

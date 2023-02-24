@@ -20,6 +20,7 @@ import Upcoming from "./Seasons/Upcoming";
 import Top from "./Seasons/Top";
 import Previous from "./Seasons/Previous";
 import Favourites from "./User/Favourites";
+import Footer from "./Footer";
 export {
   Navbar,
   Summer2022,
@@ -42,5 +43,6 @@ export {
   Upcoming,
   Top,
   Previous,
-  Favourites
+  Favourites,
+  Footer
 };

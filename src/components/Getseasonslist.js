@@ -81,7 +81,11 @@ const Getseasonslist = () => {
         </div>
         <div>
           <button
-            onClick={() => {setSeasonToggle((prev) => !prev); setYearToggle(false); setShowGenre(false);}}
+            onClick={() => {
+              setSeasonToggle((prev) => !prev);
+              setYearToggle(false);
+              setShowGenre(false);
+            }}
             className="px-5 pb-2 text-gray-500 text-lg text-left hover:text-red-500 cursor-pointer"
           >
             Season
@@ -103,7 +107,10 @@ const Getseasonslist = () => {
                   </button>
                   <button
                     value={"winter"}
-                    onClick={(e) => {setSeason(e.target.value); setSeasonToggle((prev) => !prev);}}
+                    onClick={(e) => {
+                      setSeason(e.target.value);
+                      setSeasonToggle((prev) => !prev);
+                    }}
                     className="px-4 py-2 text-left text-gray-500 text-md hover:text-red-500 cursor-pointer "
                   >
                     Winter
@@ -111,7 +118,10 @@ const Getseasonslist = () => {
                   </button>
                   <button
                     value={"summer"}
-                    onClick={(e) => {setSeason(e.target.value);setSeasonToggle((prev) => !prev)}}
+                    onClick={(e) => {
+                      setSeason(e.target.value);
+                      setSeasonToggle((prev) => !prev);
+                    }}
                     className="px-4 py-2 text-left text-gray-500 text-md hover:text-red-500 cursor-pointer "
                   >
                     Summer
@@ -119,7 +129,10 @@ const Getseasonslist = () => {
                   </button>
                   <button
                     value={"fall"}
-                    onClick={(e) => {setSeason(e.target.value);setSeasonToggle((prev) => !prev);}}
+                    onClick={(e) => {
+                      setSeason(e.target.value);
+                      setSeasonToggle((prev) => !prev);
+                    }}
                     className="px-4 py-2 text-left text-gray-500 text-md hover:text-red-500 cursor-pointer "
                   >
                     Fall
@@ -131,7 +144,7 @@ const Getseasonslist = () => {
           </form>
         </div>
         <div className="static">
-          <div className="absolute right-32 mt-32 -z-[1]">
+          <div className="absolute right-32 mt-32 -z-10 ">
             <Anime animeList={animeList} />
             {console.log(animeList)}
           </div>
