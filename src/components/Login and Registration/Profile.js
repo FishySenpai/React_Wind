@@ -1,15 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import { db } from "../../firebaseConfig";
 import { auth } from "../../firebaseConfig";
-import { doc, setDoc, collection } from "firebase/firestore";
-import {
-  faArrowDown,
-  faAmbulance,
-  faCoffee,
-} from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import { arrowDown, google } from "../../assets";
+import { arrowDown} from "../../assets";
 const Profile = () => {
   const [user, setUser] = useState({});
   const [profileToggle, setProfileToggle] = useState(false);
@@ -30,7 +23,7 @@ const Profile = () => {
   };
   return (
     <div className="flex flex-row space-x-10 static">
-      <div className="flex flex-row justify-center items-center  absolute top-[52px] z-50">
+      <div className="flex flex-row justify-center items-center  absolute left-5 top-[90px] sm:top-[52px] z-50">
         <button onClick={handleClick} className="px-1 flex flex-row">
           <h1 className="hover:text-red-400">
             {user ? (
@@ -50,7 +43,7 @@ const Profile = () => {
             <div className="h-[300px] absolute right-0 top-10 ">
               <div className="flex flex-col w-[150px] bg-white rounded font-normal p-2">
                 {user ? (
-                  <button className="font-mono cursor-pointer text-left text-black hover:text-red-400 pb-1">
+                  <button className="font-mono cursor-pointer text-left text-black hover:text-red-400 pb-1" onClick={()=>{setProfileToggle(!profileToggle)}}>
                     <Link to="/fav">Favourites</Link>
                   </button>
                 ) : (
