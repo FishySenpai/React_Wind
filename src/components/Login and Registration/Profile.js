@@ -40,7 +40,7 @@ const Profile = () => {
         </button>
         <div className={`${profileToggle ? "flex " : "hidden"}`}>
           <div className={`${user ? "flex " : "hidden"}`}>
-            <div className="h-[300px] absolute right-0 top-10 ">
+            <div className="h-[200px] absolute right-0 top-10 ">
               <div className="flex flex-col w-[150px] bg-white rounded font-normal p-2">
                 {user ? (
                   <button className="font-mono cursor-pointer text-left text-black hover:text-red-400 pb-1" onClick={()=>{setProfileToggle(!profileToggle)}}>

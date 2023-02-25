@@ -5,7 +5,7 @@ import Recommendations from "./Recommendations";
 import Reviews from "./Reviews";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faStarHalfStroke } from "@fortawesome/free-solid-svg-icons";
-import { collection, addDoc, doc, setDoc } from "firebase/firestore";
+import { collection, addDoc, doc, setDoc, deleteDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import { db } from "../firebaseConfig";
@@ -39,8 +39,7 @@ const TopAnimeInfo = () => {
   console.log(topAnime);
 useEffect(()=>{
  const userFav = async () => {
-   
-   // Add a new document in collection "cities"
+   // Add a new user in collection "users"
    try {
      await setDoc(doc(db, "users", user.uid), {});
    } catch (err) {
@@ -49,13 +48,23 @@ useEffect(()=>{
  };
  userFav();
 })
+
+const deleteFav = async () => {
+
+  // delete document in collection "favs"
+  try {
+    await deleteDoc(doc(db, "users", user.uid, "favs", mal_id));
+    setFav(false);
+  } catch (err) {
+    console.log(err);
+  }
+};
  const addFav = async () => {
-   // Add a new document in collection "cities"
+   // Add a new document in collection "favs"
    try {
-     await addDoc(collection(db, "users", user.uid, "favs"), {
+     await setDoc(doc(db, "users", user.uid, "favs", mal_id), {
       topAnime
      });
-     
    } catch (err) {
      console.log(err);
    }
@@ -134,12 +143,28 @@ useEffect(()=>{
             <div className="flex flex-col sm:flex-col md:flex-col pt-16 sm:mx-12 ">
               <div className="text-2xl">
                 {title}
-                <button onClick={addFav}>
-                  <div className="flex flex-row">
-                    <FontAwesomeIcon icon={fav? faStar :faStarHalfStroke} onClick={()=>{setFav(!fav)}} />
-                    
-                  </div>
-                </button>
+                <div className="flex flex-row space-x-4">
+                  <button onClick={addFav}>
+                    <button
+                      onClick={() => {
+                        setFav(true);
+                      }}
+                      className="text-sm bg-gray-600 rounded-sm text-white p-1"
+                    >
+                      Add To Favourites
+                    </button>
+                  </button>
+                  <button
+                    onClick={deleteFav}
+                    className={`${
+                      fav
+                        ? "text-sm bg-gray-600 rounded-sm text-white h-[28px] mt-2 p-1 "
+                        : "hidden"
+                    }`}
+                  >
+                    Remove
+                  </button>
+                </div>
               </div>
               <div className="py-5 text-sm">{synopsis}</div>
               <div className="text-sm">
