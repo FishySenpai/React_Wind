@@ -15,7 +15,7 @@ const Anime = ({ animeList }) => {
         <div className="sm:p-6 pt-12 items-center container justify-between">
           <ul className="flex flex-wrap">
             {animeList.slice(0, 24).map((top, index) => (
-              <li className="mr-4 md:mr-8 pb-6" key={top.mal_id}>
+              <li className="mr-4 md:mr-8 pb-6 " key={top.mal_id}>
                 <a href={`/topanime/${top.mal_id}`}>
                   <img
                     className="w-[140px] h-[220px] md:w-[188px] md:h-[264px] rounded hover:shadow-lg cursor-pointer hover:scale-105"

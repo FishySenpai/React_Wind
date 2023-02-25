@@ -144,7 +144,7 @@ const Getseasonslist = () => {
           </form>
         </div>
         <div className="static">
-          <div className="absolute right-32 mt-32 -z-10 ">
+          <div className="left-5 sm:left-14 absolute sm:right-0 mt-32 -z-10">
             <Anime animeList={animeList} />
             {console.log(animeList)}
           </div>
