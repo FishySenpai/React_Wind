@@ -35,8 +35,8 @@ const Review = async (query) => {
   if (revList) {
     return (
       <div>
-        <div className="px-6 items-center mx-auto container justify-between hidden sm:block ">
-          <div className="p-6 pt-12 items-center container justify-between">
+        <div className="px-2 sm:px-6 items-center mx-auto container justify-between ">
+          <div className="sm:p-6 pt-12 items-center container justify-between">
             <div className="text-2xl py-5">Reviews</div>
             <ul className="flex flex-wrap">
               {revList.slice(0, 3).map((rev, index) => (

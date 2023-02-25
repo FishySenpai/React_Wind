@@ -142,7 +142,7 @@ useEffect(()=>{
                 </button>
               </div>
               <div className="py-5 text-sm">{synopsis}</div>
-              <div className="">
+              <div className="text-sm">
                 <Reviews />
               </div>
             </div>
