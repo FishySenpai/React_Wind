@@ -49,7 +49,7 @@ const App = () => {
                 element={
                   <>
                     <Search />
-                    <Top />
+                    <TopAnime />
                   </>
                 }
               />
