@@ -17,7 +17,11 @@ const Upcoming = () => {
             <button
               className="text-[16px] pl-[130px] sm:ml-[96] sm:pl-[300px] xl:ml-96 xl:pl-[770px] sticky"
               onClick={(e) => {
-                setViewAll(24);
+                if (viewAll == 6) {
+                  setViewAll(24);
+                } else if (viewAll == 24) {
+                  setViewAll(6);
+                }
               }}
             >
               View All
