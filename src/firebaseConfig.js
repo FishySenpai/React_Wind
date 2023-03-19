@@ -33,6 +33,7 @@ export const signInWithGoogle = () => {
       localStorage.setItem("name", name);
       localStorage.setItem("email", email);
       localStorage.setItem("profilePic", profilePic);
+      window.location.pathname = "/";
     })
     .catch((error) => {
       console.log(error);
