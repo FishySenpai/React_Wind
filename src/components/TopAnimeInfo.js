@@ -9,9 +9,11 @@ import { collection, addDoc, doc, setDoc, deleteDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import { db } from "../firebaseConfig";
+import { useNavigate } from "react-router-dom";
 const TopAnimeInfo = () => {
   const [user, setUser] = useState({});
   const [fav, setFav] = useState(false);
+  const navigate = useNavigate();
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -61,13 +63,19 @@ const deleteFav = async () => {
 };
  const addFav = async () => {
    // Add a new document in collection "favs"
-   try {
-     await setDoc(doc(db, "users", user.uid, "favs", mal_id), {
-      topAnime
-     });
-   } catch (err) {
-     console.log(err);
+   if(user){
+    try {
+      await setDoc(doc(db, "users", user.uid, "favs", mal_id), {
+        topAnime,
+      });
+    } catch (err) {
+      console.log(err);
+    }
    }
+   else {
+    navigate("/login");
+   }
+   
  };
   if (images) {
     return (
