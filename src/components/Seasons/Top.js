@@ -7,7 +7,24 @@ const Top = () => {
   const url = `https://api.jikan.moe/v4/top/anime`;
   const { topAnime, loading } = useFetch(url);
   console.log(topAnime);
-  
+  if (loading) {
+    return (
+      <div className="px-6 items-center mx-auto container justify-between">
+        <div className="md:px-10 items-center mx-auto container justify-between">
+          <div className="flex flex-wrap">
+            {[...Array(viewAll)].map((_, index) => (
+              <div className="  rounded-lg p-1 animate-pulse " key={index}>
+                <div className="w-[140px] h-[220px] md:w-[188px] md:h-[264px] bg-gray-300 mb-2"></div>
+                <div className="mt-2 mb-2">
+                  <div className="w-12 md:w-28  bg-gray-300 h-4 shadow"></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  } else {
     return (
       <div className="px-6 items-center mx-auto container justify-between">
         <div className="md:px-6 items-center mx-auto container justify-between">
@@ -48,5 +65,6 @@ const Top = () => {
       </div>
     );
   }
+}
 
 export default Top;
