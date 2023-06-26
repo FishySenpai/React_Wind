@@ -47,7 +47,7 @@ import { Link } from "react-router-dom";
         </div>
         <div className="md:px-6 items-center container justify-between">
           <ul className="flex flex-wrap">
-            {topAnime.slice(0, viewAll).map((top, index) => (
+            {topAnime?.slice(0, viewAll).map((top, index) => (
               <li className="mr-4 md:mr-8 pb-6" key={top.mal_id}>
                 <img
                   className="w-[140px] h-[220px] md:w-[188px] md:h-[264px] rounded hover:shadow-lg cursor-pointer hover:scale-105"

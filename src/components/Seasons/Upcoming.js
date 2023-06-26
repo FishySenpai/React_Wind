@@ -28,7 +28,7 @@ const Upcoming = () => {
   } else {
     return (
       <div className="px-6 items-center mx-auto container justify-between">
-        <div className="md:px-6 items-center mx-auto container justify-between">
+        <div className="md:px-10 items-center mx-auto container justify-between">
           <div className="text-gray-500 text-2xl ml-2 md:ml-6 static">
             Upcoming
             <button
@@ -47,7 +47,7 @@ const Upcoming = () => {
 
           <div className="md:px-6 items-center container justify-between">
             <ul className="flex flex-wrap">
-              {topAnime.slice(0, viewAll).map((top, index) => (
+              {topAnime?.slice(0, viewAll).map((top, index) => (
                 <li className="mr-4 md:mr-8 pb-6" key={top.mal_id}>
                   <a href={`/topanime/${top.mal_id}`}>
                     <img

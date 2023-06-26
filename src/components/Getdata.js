@@ -10,7 +10,12 @@ export  const useFetch= (...url)=>{
     setLoading(false)
   };
   useEffect(() => {
-    getTopAnime();
+    try{
+      getTopAnime();
+    } catch(err){
+      console.log(err)
+    }
+    
   }, []);
   return {loading, topAnime}
 }
