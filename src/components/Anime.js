@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AnimeContext } from "./AnimeContext";
 import Getgenre from "./Genres/Getgenre";
 
 const Anime = ({ animeList }) => {
@@ -37,7 +36,9 @@ const Anime = ({ animeList }) => {
       </div>
     );
   } else {
-    <div>Loading...</div>;
+    <div className="px-6 items-center mx-auto container justify-between">
+      Loading...
+    </div>;
   }
 };
 

@@ -1,12 +1,12 @@
 import React from "react";
-import { useFetch } from "./Getdata";
+import { useFetch } from "../Getdata";
 import { Link } from "react-router-dom";
 
- const TopAnime = () => {
+const TopAnime = () => {
   const url = "https://api.jikan.moe/v4/top/anime";
   const { topAnime, loading } = useFetch(url);
   console.log(topAnime);
-  if(loading){
+  if (loading) {
     return (
       <div className="px-6 items-center mx-auto container justify-between">
         <div className="md:px-10 items-center mx-auto container justify-between">
@@ -23,13 +23,13 @@ import { Link } from "react-router-dom";
         </div>
       </div>
     );
-  } else{
+  } else {
     return (
       <div className="px-6 items-center mx-auto container justify-between">
         <div className="md:px-6 items-center mx-auto container justify-between">
           <div className="text-gray-500 text-2xl ml-4 pb-2 md:ml-6 static">
             Top Anime
-            </div>
+          </div>
           <div className="md:px-6 items-center container justify-between">
             <ul className="flex flex-wrap ml-4">
               {topAnime.slice(0, 24).map((top, index) => (
