@@ -30,7 +30,8 @@ const Footer = () => {
                 </svg>
               </i>
             </a>
-            <a href="https://twitter.com/noman_basit" target="_blank">
+            
+            {/* <a href="https://twitter.com/noman_basit" target="_blank">
               <i class="w-6 inline-block mx-2">
                 <svg
                   aria-hidden="true"
@@ -47,7 +48,7 @@ const Footer = () => {
                   ></path>
                 </svg>
               </i>
-            </a>
+            </a> */}
             <a href="https://github.com/FishySenpai" target="_blank">
               <i class="w-6 inline-block mx-2">
                 <svg

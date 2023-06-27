@@ -26,11 +26,11 @@ const TopAnime = () => {
   } else {
     return (
       <div className="px-6 items-center mx-auto container justify-between">
-        <div className="md:px-6 items-center mx-auto container justify-between">
+        <div className=" items-center mx-auto container justify-between">
           <div className="text-gray-500 text-2xl ml-4 pb-2 md:ml-6 static">
             Top Anime
           </div>
-          <div className="md:px-6 items-center container justify-between">
+          <div className="p-2 sm:p-6 items-center container justify-between">
             <ul className="flex flex-wrap ml-4">
               {topAnime.slice(0, 24).map((top, index) => (
                 <li className="mr-4 md:mr-8 pb-6" key={top.mal_id}>
