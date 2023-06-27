@@ -5,14 +5,13 @@ import Recommendations from "./Recommendations";
 import Reviews from "./Reviews";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faStarHalfStroke } from "@fortawesome/free-solid-svg-icons";
-import { collection, addDoc, doc, setDoc, deleteDoc } from "firebase/firestore";
+import { collection, addDoc, doc, setDoc, deleteDoc, getDocs, query, where } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../firebaseConfig";
-import { db } from "../firebaseConfig";
+import { auth, db } from "../firebaseConfig";
 import { useNavigate } from "react-router-dom";
 const TopAnimeInfo = () => {
   const [user, setUser] = useState({});
-  const [fav, setFav] = useState(false);
+  const [checkFav, setCheckFav] = useState(false);
   const navigate = useNavigate();
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {
@@ -51,12 +50,35 @@ useEffect(()=>{
  userFav();
 })
 
+useEffect(() => {
+  if (user?.uid) {
+    try {
+      const docRef = collection(db, "users", user.uid, "favs");
+
+      const docSnap = async () => {
+        const fav = await getDocs(docRef);
+        const elementNames = fav.docs.map((doc) => doc.id);
+
+        const Fav = elementNames.includes(mal_id);
+        setCheckFav(Fav);
+        console.log(checkFav);
+      };
+      docSnap();
+    } catch (err) {
+      console.log(err);
+    }
+  }
+}, [user?.uid]);
+
+
+
+
 const deleteFav = async () => {
 
   // delete document in collection "favs"
   try {
     await deleteDoc(doc(db, "users", user.uid, "favs", mal_id));
-    setFav(false);
+    setCheckFav(false);
   } catch (err) {
     console.log(err);
   }
@@ -113,7 +135,7 @@ const deleteFav = async () => {
                     {rank}
                   </div>
                   <div className="">
-                    <div className="text-cyan-900 font-semibold mx-4">
+                    <div className="text-cyan-900 font-semibold">
                       Genres:{" "}
                     </div>
                     {genres.map((top, index) => (
@@ -155,17 +177,17 @@ const deleteFav = async () => {
                   <button onClick={addFav}>
                     <button
                       onClick={() => {
-                        setFav(true);
+                        setCheckFav(true);
                       }}
                       className="text-sm bg-gray-600 rounded-sm text-white p-1"
                     >
-                      Add To Favourites
+                      {!checkFav? "Add to Favourite" : "Added"}
                     </button>
                   </button>
                   <button
                     onClick={deleteFav}
                     className={`${
-                      fav
+                      checkFav
                         ? "text-sm bg-gray-600 rounded-sm text-white h-[28px] mt-2 p-1 "
                         : "hidden"
                     }`}
