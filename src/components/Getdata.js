@@ -13,6 +13,7 @@ export const useFetch = (...url) => {
     const topAnime = await response.json();
     setTopAnime(topAnime.data);
     setLoading(false);
+    
   };
 
   const fetchData = async () => {
@@ -24,10 +25,10 @@ export const useFetch = (...url) => {
         console.log(err);
         setTimeout(() => {
           fetchData();
-        }, 2000); // Retry after 2 seconds
+        }, 3000); // Retry after 2 seconds
       } else {
         console.log('Maximum retry count reached');
-        setLoading(false);
+        setLoading(true);
       }
     }
   };

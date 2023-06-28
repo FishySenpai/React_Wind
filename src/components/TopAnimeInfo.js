@@ -3,8 +3,6 @@ import { Link, useParams } from "react-router-dom";
 import { useFetch } from "./Getdata";
 import Recommendations from "./Recommendations";
 import Reviews from "./Reviews";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar, faStarHalfStroke } from "@fortawesome/free-solid-svg-icons";
 import { collection, addDoc, doc, setDoc, deleteDoc, getDocs, query, where } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth, db } from "../firebaseConfig";
@@ -21,6 +19,7 @@ const TopAnimeInfo = () => {
   const { mal_id } = useParams();
   const url = `https://api.jikan.moe/v4/anime/${mal_id}`;
   const { topAnime, loading } = useFetch(url);
+
   const {
     title,
     score,
@@ -211,7 +210,7 @@ const deleteFav = async () => {
   } else if (loading) {
     return (
       <div className="flex justify-center">
-        <img src="giphy.gif" alt="Loading..." />
+        <img src="giphy.gif"/>
       </div>
     );
   }
