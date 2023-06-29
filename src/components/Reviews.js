@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-
+import { useFetch } from "./Getdata";
 import Anime from "./Anime";
 
 const Reviews = () => {
-  const [revList, setRevList] = useState();
+  const { mal_id } = useParams();
+  const url = `https://api.jikan.moe/v4/anime/${mal_id}/reviews`;
+  const { topAnime, loading } = useFetch(url);
   const [revToggle, setRevToggle]= useState(false);
   const [revID, setRevID] = useState();
-  const { mal_id } = useParams();
+ 
   const [retry, setRetry] = useState(0);
   const maxRetries = 3;
-  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  console.log(revList);
+  console.log(topAnime);
 
    const handleClick = (id) => {
      if (id === revID) {
@@ -23,33 +24,6 @@ const Reviews = () => {
      setRevID(id);
    };
 
-const Review = async (query) => {
-  const temp = await fetch(
-    `https://api.jikan.moe/v4/anime/${mal_id}/reviews`
-  ).then((res) => res.json());
-  setRevList(temp.data);
-setLoading(false)
-  console.log(temp.data);
-};
-const fetchData = async () => {
-  try {
-    await Review();
-  } catch (err) {
-    if (retry < maxRetries) {
-      setRetry(retry + 1);
-      console.log(err);
-      setTimeout(() => {
-        fetchData();
-      }, 2000); // Retry after 2 seconds
-    } else {
-      console.log("Maximum retry count reached");
-      setLoading(true);
-    }
-  }
-};
-  useEffect(() => {
-      fetchData();
-  }, [retry]);
 
   if (loading) {
      return (
@@ -81,12 +55,12 @@ const fetchData = async () => {
          <div className="sm:p-6 pt-12 items-center container justify-between">
            <div className="text-2xl py-5">Reviews</div>
            <ul className="flex flex-wrap">
-             {revList?.slice(0, 3).map((rev, index) => (
+             {topAnime?.slice(0, 3).map((rev, index) => (
                <li className="mr-8 pb-6" key={rev.mal_id}>
                  <div className="text-gray-600 text-md">
                    <div className="flex flex-row">
                      <a href={rev.user.url}>
-                       {console.log(revList.user)}
+                       {console.log(topAnime.user)}
                        <img
                          className="w-16 h-16 rounded-full"
                          src={rev.user.images?.jpg.image_url}
