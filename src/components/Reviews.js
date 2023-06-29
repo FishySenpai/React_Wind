@@ -9,9 +9,6 @@ const Reviews = () => {
   const { topAnime, loading } = useFetch(url);
   const [revToggle, setRevToggle]= useState(false);
   const [revID, setRevID] = useState();
- 
-  const [retry, setRetry] = useState(0);
-  const maxRetries = 3;
   const navigate = useNavigate();
   console.log(topAnime);
 

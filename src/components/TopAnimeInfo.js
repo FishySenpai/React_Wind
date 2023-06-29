@@ -35,6 +35,8 @@ const TopAnimeInfo = () => {
     season,
     year,
     genres,
+    episodes,
+    rating
   } = topAnime;
   console.log(topAnime);
 useEffect(()=>{
@@ -117,10 +119,16 @@ const deleteFav = async () => {
             />
             <div className="mt-44">
               <div className="overflow-y-auto sm:overflow-y-hidden">
-                <div className="w-[810px]  p-2 space-x-6 sm:space-x-0 sm:w-[210px] sm:pl-2 sm:space-y-1 bg-white rounded sm:pb-6 sm:mb-6 flex flex-row sm:flex-col">
+                <div className="w-[1110px]  p-2 space-x-6 sm:space-x-0 sm:w-[210px] sm:pl-2 sm:space-y-1 bg-white rounded sm:pb-6 sm:mb-6 flex flex-row sm:flex-col">
                   <div>
                     <div className="text-cyan-900 font-semibold">Format: </div>
                     {type}
+                  </div>
+                  <div>
+                    <div className="text-cyan-900 font-semibold">
+                      Episodes:{" "}
+                    </div>
+                    {episodes}
                   </div>
                   <div className="">
                     <div className="text-cyan-900 font-semibold">Score: </div>
@@ -134,13 +142,24 @@ const deleteFav = async () => {
                     {rank}
                   </div>
                   <div className="">
-                    <div className="text-cyan-900 font-semibold">
-                      Genres:{" "}
-                    </div>
+                    <div className="text-cyan-900 font-semibold ">Genres: </div>
                     {genres.map((top, index) => (
-                      <li>{top.name}</li>
+                      <li className="list-none ">{top.name}</li>
                     ))}
                     {console.log(genres.name)}
+                  </div>
+
+                  <div>
+                    <div className="text-cyan-900 font-semibold"> Aired:</div>
+                    {aired.string}
+                  </div>
+                  <div>
+                    <div className="text-cyan-900 font-semibold">Season:</div>
+                    {season} {year}
+                  </div>
+                  <div>
+                    <div className="text-cyan-900 font-semibold"> Rating:</div>
+                    {rating}
                   </div>
                   <div className="">
                     <div className="text-cyan-900 font-semibold">
@@ -158,14 +177,6 @@ const deleteFav = async () => {
                     </div>
                     {favorites}
                   </div>
-                  <div>
-                    <div className="text-cyan-900 font-semibold"> Aired:</div>
-                    {aired.string}
-                  </div>
-                  <div>
-                    <div className="text-cyan-900 font-semibold">Season:</div>
-                    {season} {year}
-                  </div>
                 </div>
               </div>
             </div>
@@ -180,7 +191,7 @@ const deleteFav = async () => {
                       }}
                       className="text-sm bg-gray-600 rounded-sm text-white p-1"
                     >
-                      {!checkFav? "Add to Favourite" : "Added"}
+                      {!checkFav ? "Add to Favourite" : "Added"}
                     </button>
                   </button>
                   <button

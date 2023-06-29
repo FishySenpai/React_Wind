@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-export const useFetch = (...url) => {
+export const useFetch = (url) => {
   const [loading, setLoading] = useState(true);
   const [topAnime, setTopAnime] = useState([]);
   const [retry, setRetry] = useState(0);
@@ -14,7 +14,7 @@ export const useFetch = (...url) => {
     setTopAnime(topAnime.data);
     setLoading(false);
     
-  };
+  }
 
   const fetchData = async () => {
     try {
