@@ -81,7 +81,7 @@ const fetchData = async () => {
          <div className="sm:p-6 pt-12 items-center container justify-between">
            <div className="text-2xl py-5">Reviews</div>
            <ul className="flex flex-wrap">
-             {revList.slice(0, 3).map((rev, index) => (
+             {revList?.slice(0, 3).map((rev, index) => (
                <li className="mr-8 pb-6" key={rev.mal_id}>
                  <div className="text-gray-600 text-md">
                    <div className="flex flex-row">
