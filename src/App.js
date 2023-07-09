@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import { Route, Routes } from "react-router-dom";
 import { Navbar, Summer2022, Anime, TopAnime, TopAnimeInfo, Search, ShowGenre, Login, Registration, UserContext, Profile, Upcoming, Top, Previous, Favourites, Footer, Trending} from "./components";
 import { UserProfile } from "./components/Contexts/UserProfile";
+import { FetchCacheProvider } from "./components/Getdata";
 
 
 const App = () => {
@@ -27,79 +28,79 @@ const App = () => {
       }}
     >
       <UserProfile.Provider value={{ fav, setFav }}>
-        <div className="bg-main">
-          <Navbar />
-          <div>
-            <Routes>
-              <Route
-                path="/"
-                element={
-                  <>
-                    <Search />
-                    <Trending />
-                    <Upcoming />
-                    <Top />
-                    <Footer/>
-                  </>
-                }
-              />
-              <Route path="/topanime/:mal_id" element={<TopAnimeInfo />} />
-              <Route
-                path="/topanime"
-                element={
-                  <>
-                    <Search />
-                    <TopAnime />
-                  </>
-                }
-              />
-              <Route path="/search" element={<Search />} />
-              <Route
-                path="/search/anime/:year/:season"
-                element={
-                  <>
-                    <Search />
-                    <Anime />
-                    
-                  </>
-                }
-              />
-              <Route
-                path="/search/:anime"
-                element={
-                  <>
-                    <Search />
-                    <Anime />
-                  </>
-                }
-              />
-              <Route
-                path="/search/anime/genre/:id"
-                element={
-                  <>
-                    <Search />
-                    <ShowGenre />
-                  </>
-                }
-              />
-              <Route
-                path="/previous"
-                element={
-                  <>
-                    <Search />
-                    <Previous />
-                  </>
-                }
-              />
+        <FetchCacheProvider>
+          <div className="bg-main">
+            <Navbar />
+            <div>
+              <Routes>
+                <Route
+                  path="/"
+                  element={
+                    <>
+                      <Search />
+                      <Trending />
+                      <Upcoming />
+                      <Top />
+                      <Footer />
+                    </>
+                  }
+                />
+                <Route path="/topanime/:mal_id" element={<TopAnimeInfo />} />
+                <Route
+                  path="/topanime"
+                  element={
+                    <>
+                      <Search />
+                      <TopAnime />
+                    </>
+                  }
+                />
+                <Route path="/search" element={<Search />} />
+                <Route
+                  path="/search/anime/:year/:season"
+                  element={
+                    <>
+                      <Search />
+                      <Anime />
+                    </>
+                  }
+                />
+                <Route
+                  path="/search/:anime"
+                  element={
+                    <>
+                      <Search />
+                      <Anime />
+                    </>
+                  }
+                />
+                <Route
+                  path="/search/anime/genre/:id"
+                  element={
+                    <>
+                      <Search />
+                      <ShowGenre />
+                    </>
+                  }
+                />
+                <Route
+                  path="/previous"
+                  element={
+                    <>
+                      <Search />
+                      <Previous />
+                    </>
+                  }
+                />
 
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Registration />} />
-              <Route path="/user" element={<Profile />} />
-              <Route path="/fav" element={<Favourites/>}/>
-            </Routes>
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Registration />} />
+                <Route path="/user" element={<Profile />} />
+                <Route path="/fav" element={<Favourites />} />
+              </Routes>
+            </div>
           </div>
-          
-        </div>
+        </FetchCacheProvider>
       </UserProfile.Provider>
     </UserContext.Provider>
   );
