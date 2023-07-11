@@ -46,7 +46,7 @@ export const useFetch = (url) => {
         if (retry < maxRetries) {
           setTimeout(() => {
             fetchData();
-          }, 1000); // Retry after 1 second
+          }, 2000); // Retry after 1 second
         }
       }
     };
