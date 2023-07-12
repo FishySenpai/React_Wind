@@ -1,33 +1,20 @@
-import React, { useState, useEffect, useCallback, useContext } from "react";
-
-// Create a cache context
-const FetchCacheContext = React.createContext({});
+import React, { useState, useEffect, useCallback } from "react";
 
 export const useFetch = (url) => {
-  const cache = useContext(FetchCacheContext);
-  const cacheKey = url; // Use the URL as the cache key
-
   const [loading, setLoading] = useState(true);
   const [topAnime, setTopAnime] = useState([]);
   const [retry, setRetry] = useState(0);
   const maxRetries = 3; // Maximum number of retries
 
   const getTopAnime = useCallback(async () => {
-    const cachedData = cache.get(cacheKey);
-    if (cachedData) {
-      setTopAnime(cachedData);
-      setLoading(false);
-    } else {
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error("Failed to fetch data");
-      }
-      const topAnimeData = await response.json();
-      setTopAnime(topAnimeData.data);
-      setLoading(false);
-      cache.set(cacheKey, topAnimeData.data);
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error("Failed to fetch data");
     }
-  }, [url, cache, cacheKey]);
+    const topAnimeData = await response.json();
+    setTopAnime(topAnimeData.data);
+    setLoading(false);
+  }, [url]);
 
   const retryFetch = useCallback(() => {
     if (retry < maxRetries) {
@@ -52,18 +39,7 @@ export const useFetch = (url) => {
     };
 
     fetchData();
-  }, [getTopAnime, retryFetch]);
+  }, []); // Empty dependency array
 
   return { loading, topAnime };
-};
-
-// Create a cache provider component to wrap your app
-export const FetchCacheProvider = ({ children }) => {
-  const cache = new Map();
-
-  return (
-    <FetchCacheContext.Provider value={cache}>
-      {children}
-    </FetchCacheContext.Provider>
-  );
 };

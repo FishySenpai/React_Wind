@@ -31,7 +31,7 @@ const Recommendations = () => {
       </div>
     );
      
-   } else {
+   } else if(topAnime.length>0){
      return (
        <div>
          <div className="sm:px-6 items-center mx-auto container justify-between">
@@ -65,7 +65,18 @@ const Recommendations = () => {
          </div>
        </div>
      );
-   }
+   } else {
+    return (
+      <div className="sm:px-6 items-center mx-auto container justify-between">
+        <div className="p-6 pt-6 items-center container justify-between">
+          <div className="text-2xl py-2">Recommendations</div>
+          <div className="text-xl">
+            No Recommendations have been added yet.
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default Recommendations;
