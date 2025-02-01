@@ -9,4 +9,6 @@ Explore the ultimate anime hub, where you can search for shows, discover popular
 <li>ReactJS</li>
 <li>Firebase</li>
 </ul>
+
+Live Website: <a href="https://react-wind.netlify.app/"/>
 <img src="https://github.com/FishySenpai/Portfolio/blob/main/public/react-wind.png" />
